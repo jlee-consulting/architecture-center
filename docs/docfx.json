@@ -8,13 +8,14 @@
           "**/*.md",
           "**/toc.yml",
           "**/toc.experimental.yml",
-          "**/*context.yml"
+          "**/*context.yml",
+          "**/index.yml"
         ],
         "exclude": [
           "**/obj/**",
           "**/*.liquid.md",
           "**/_css/**",
-          "**/_includes/**",
+          "**/includes/**",
           "**/_bread/**",
           "**/_themes/**"
         ]
@@ -38,12 +39,30 @@
           "**/*.jpeg",
           "**/*.gif",
           "**/*.svg",
-          "feed.xml"
+          "**/*.js",
+          "**/*.json",
+          "**/*.docx",
+          "feed.atom"
         ],
         "exclude": [
           "**/obj/**",
           "**/_themes/**"
         ]
+      },
+      {
+        "files": [
+          "includes/**/*.svg",
+          "includes/**/*.png",
+          "includes/**/*.jpg",
+          "includes/**/*.jpeg",
+          "includes/**/*.gif"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/_themes/**"
+        ],
+        "src": "null",
+        "dest": null
       }
     ],
     "overwrite": [],
@@ -53,6 +72,8 @@
       "feedback_github_repo": "MicrosoftDocs/architecture-center",
       "breadcrumb_path": "/azure/architecture/bread/toc.json",
       "brand": "azure",
+      "uhfHeaderId": "azure",
+      "titleSuffix": "Azure Architecture Center",
       "ms.author": "pnp",
       "ms.service": "architecture-center",
       "_op_documentIdPathDepotMapping": {
@@ -65,15 +86,10 @@
       "searchScope": [ "Azure", "Azure Architecture Center" ]
     },
     "fileMetadata": {
-      "feedback_product_url": {
-        "example-scenario/**/*.md": "https://azure-architecture.uservoice.com/forums/918625-architecture-guidance",
-        "guide/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
-        "data-guide/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
-        "patterns/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
-        "best-practices/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals",
-        "antipatterns/**/*.md": "https://azure-architecture.uservoice.com/forums/918628-cloud-fundamentals"
-      },
       "featureFlags": {
+        "**/*.md": [
+          "binaryRatingUpdate"
+        ]
       },
       "searchScope": { 
         "guide/**/*.md": [ "Azure", "Azure Architecture Center", "Application Architecture Guide" ],
@@ -86,7 +102,10 @@
         "reference-architectures/data/**/*.md": [ "Azure", "Azure Architecture Center", "Data Guide" ],
         "example-scenario/data/**/*.md": [ "Azure", "Azure Architecture Center", "Data Guide" ],
         "reference-architectures/hybrid-networking/**/*.md": [ "Azure", "Azure Architecture Center", "Networking" ],
-        "reference-architectures/dmz/**/*.md": [ "Azure", "Azure Architecture Center", "Networking" ]
+        "reference-architectures/dmz/**/*.md": [ "Azure", "Azure Architecture Center", "Networking" ],
+        "reference-architectures/**/*.md": [ "Azure", "Azure Architecture Center", "Reference Architectures" ],
+        "example-scenario/**/*.md": [ "Azure", "Azure Architecture Center", "Reference Architectures" ],
+        "solution-ideas/**/*.md": [ "Azure", "Azure Architecture Center", "Reference Architectures" ]
       }
     },
     "template": [

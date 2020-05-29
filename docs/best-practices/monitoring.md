@@ -10,6 +10,8 @@ ms.subservice: cloud-fundamentals
 ms.custom: seodec18
 ---
 
+<!-- cSpell:ignore SIEM HDFS SSDT -->
+
 # Best practices for monitoring cloud applications
 
 Distributed applications and services running in the cloud are, by their nature, complex pieces of software that comprise many moving parts. In a production environment, it's important to be able to track the way in which users use your system, trace resource utilization, and generally monitor the health and performance of your system. You can use this information as a diagnostic aid to detect and correct issues, and also to help spot potential problems and prevent them from occurring.
@@ -550,7 +552,7 @@ To optimize the use of bandwidth, you can elect to transfer less urgent data in 
 
 The instrumentation data-collection subsystem can actively retrieve instrumentation data from the various logs and other sources for each instance of the application (the *pull model*). Or, it can act as a passive receiver that waits for the data to be sent from the components that constitute each instance of the application (the *push model*).
 
-One approach to implementing the pull model is to use monitoring agents that run locally with each instance of the application. A monitoring agent is a separate process that periodically retrieves (pulls) telemetry data collected at the local node and writes this information directly to centralized storage that all instances of the application share. This is the mechanism that Azure Diagnostics implements. Each instance of an Azure web or worker role can be configured to capture diagnostic and other trace information that's stored locally. The monitoring agent that runs alongside each instance copies the specified data to Azure Storage. The article [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics) provides more details on this process. Some elements, such as IIS logs, crash dumps, and custom error logs, are written to blob storage. Data from the Windows event log, ETW events, and performance counters is recorded in table storage. Figure 3 illustrates this mechanism.
+One approach to implementing the pull model is to use monitoring agents that run locally with each instance of the application. A monitoring agent is a separate process that periodically retrieves (pulls) telemetry data collected at the local node and writes this information directly to centralized storage that all instances of the application share. This is the mechanism that Azure Diagnostics implements. Each instance of an Azure web or worker role can be configured to capture diagnostic and other trace information that's stored locally. The monitoring agent that runs alongside each instance copies the specified data to Azure Storage. The article [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics) provides more details on this process. Some elements, such as IIS logs, crash dumps, and custom error logs, are written to blob storage. Data from the Windows event log, ETW events, and performance counters is recorded in table storage. Figure 3 illustrates this mechanism.
 
 ![Illustration of using a monitoring agent to pull information and write to shared storage](./images/monitoring/PullModel.png)
 
@@ -732,13 +734,12 @@ In many cases, batch processes can generate reports according to a defined sched
 - [Health Endpoint Monitoring pattern](../patterns/health-endpoint-monitoring.md) describes how to implement functional checks within an application that external tools can access through exposed endpoints at regular intervals.
 - [Priority Queue pattern](../patterns/priority-queue.md) shows how to prioritize queued messages so that urgent requests are received and can be processed before less urgent messages.
 
-## More information
+## Next steps
 
-- [Monitor, diagnose, and troubleshoot Microsoft Azure Storage](/azure/storage/storage-monitoring-diagnosing-troubleshooting)
-- [Azure: Telemetry Basics and Troubleshooting](https://social.technet.microsoft.com/wiki/contents/articles/18146.windows-azure-telemetry-basics-and-troubleshooting.aspx)
-- [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](/azure/cloud-services/cloud-services-dotnet-diagnostics)
-- [Azure Cache for Redis](https://azure.microsoft.com/services/cache/), [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), and [HDInsight](https://azure.microsoft.com/services/hdinsight/)
-- [How to use Service Bus queues](/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
-- [SQL Server business intelligence in Azure Virtual Machines](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-bi)
-- [Receive alert notifications](/azure/monitoring-and-diagnostics/insights-receive-alert-notifications) and [Track service health](/azure/monitoring-and-diagnostics/insights-service-health)
-- [Application Insights](/azure/application-insights/app-insights-overview)
+- [Azure Monitor overview](https://docs.microsoft.com/azure/azure-monitor/overview)
+- [Monitor, diagnose, and troubleshoot Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)
+- [Overview of alerts in Microsoft Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-receive-alert-notifications)
+- [View service health notifications by using the Azure portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-service-health)
+- [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
+- [Performance diagnostics for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/performance-diagnostics)
+- [Download and install SQL Server Data Tools (SSDT) for Visual Studio](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-bi)

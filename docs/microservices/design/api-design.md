@@ -5,6 +5,9 @@ author: MikeWasson
 ms.date: 05/23/2019
 ms.topic: guide
 ms.service: architecture-center
+ms.category:
+  - web
+  - developer-tools
 ms.subservice: reference-architecture
 ms.custom: microservices
 ---
@@ -66,7 +69,7 @@ Here are some specific considerations to keep in mind.
 
 - For operations with side effects, consider making them idempotent and implementing them as PUT methods. That will enable safe retries and can improve resiliency. The article [Interservice communication](./interservice-communication.md) discuss this issue in more detail.
 
-- HTTP methods can have asynchronous semantics, where the method returns a response immediately, but the service carries out the operation asynchronously. In that case, the method should return an [HTTP 202](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) response code, which indicates the request was accepted for processing, but the processing is not yet completed.
+- HTTP methods can have asynchronous semantics, where the method returns a response immediately, but the service carries out the operation asynchronously. In that case, the method should return an [HTTP 202](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) response code, which indicates the request was accepted for processing, but the processing is not yet completed. For more information, see [Asynchronous Request-Reply pattern](../../patterns/async-request-reply.md).
 
 ## Mapping REST to DDD patterns
 

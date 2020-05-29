@@ -1,9 +1,11 @@
 ---
-title: Training of Python scikit-learn and deep learning models on Azure
-description:  This reference architecture shows recommended practices for tuning the hyperparameters (training parameters) of a scikit-learn Python model.
+title: Training Python models on Azure
+description: This reference architecture shows recommended practices for tuning the hyperparameters (training parameters) of a scikit-learn Python model.
 author: fboylu
 ms.date: 07/17/2019
 ms.service: architecture-center
+ms.category:
+  - ai-machine-learning
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
 ---
@@ -18,9 +20,9 @@ This reference architecture shows recommended practices for tuning the hyperpara
 
 **Scenario 1: FAQ matching.** The problem addressed here is Frequently Asked Question (FAQ) matching. This scenario uses a subset of Stack Overflow question data that includes original questions tagged as JavaScript, their duplicate questions, and their answers. It tunes a scikit-learn pipeline to predict the probability that a duplicate question matches one of the original questions.
 
-Processing in this [Azure Machine Learning service pipeline][pipeline] scenario involves the following steps:
+Processing in this [Azure Machine Learning pipeline][pipeline] scenario involves the following steps:
 
-1. The training Python script is submitted to the [Azure Machine Learning service][aml].
+1. The training Python script is submitted to [Azure Machine Learning][aml].
 
 1. The script runs in Docker containers that are created on each node.
 
@@ -30,7 +32,7 @@ Processing in this [Azure Machine Learning service pipeline][pipeline] scenario 
 
 1. The model's performance is evaluated on the testing data, and is written to Azure Storage.
 
-1. The best performing model is [registered][mlops] with the Azure Machine Learning service.
+1. The best performing model is [registered][mlops] with Azure Machine Learning.
 
 See also considerations for training [deep learning models][training-deep-learning] with GPUs.
 
@@ -38,7 +40,7 @@ See also considerations for training [deep learning models][training-deep-learni
 
 Processing in this scenario involves the following steps:
 
-1. The training Python script is submitted to the [Azure Machine Learning service][aml].
+1. The training Python script is submitted to [Azure Machine Learning][aml].
 
 1. The script runs in Docker containers that are created on each node by pulling a custom image that is stored on [Azure Container Registry][acr].
 
@@ -46,7 +48,7 @@ Processing in this scenario involves the following steps:
 
 1. The model's performance is evaluated on the testing data, and is written to Azure Storage.
 
-1. The best performing model is registered with the Azure Machine Learning service.
+1. The best performing model is registered with Azure Machine Learning.
 
 See also considerations for distributed training of [deep learning models][training-deep-learning] with GPUs.
 
@@ -56,13 +58,13 @@ This architecture consists of several Azure cloud services that scale resources 
 
 [Microsoft Data Science Virtual Machine][dsvm] (DSVM) is a VM image configured with tools used for data analytics and machine learning. Both Windows Server and Linux versions are available. This deployment uses the Linux editions of the DSVM on Ubuntu 16.04 LTS.
 
-[Azure Machine Learning service][aml] is used to train, deploy, automate, and manage machine learning models at cloud scale. It's used in this architecture to manage the allocation and use of the Azure resources described below.
+[Azure Machine Learning][aml] is used to train, deploy, automate, and manage machine learning models at cloud scale. It's used in this architecture to manage the allocation and use of the Azure resources described below.
 
 [Azure Machine Learning Compute][aml-compute] is the resource used to train and test machine learning and AI models at scale in Azure. The [compute target][target] in this scenario is a cluster of nodes that are allocated on demand based on an automatic [scaling][scaling] option. Each node is a VM that runs a training job for a particular [hyperparameter][hyperparameter] set.
 
-[Azure Container Registry][acr] stores images for all types of Docker container deployments. These containers are created on each node and used to run the training Python script. The image used in the Machine Learning Compute cluster is created by the Machine Learning service in the local run and hyperparameter tuning notebooks, and then is pushed to Container Registry.
+[Azure Container Registry][acr] stores images for all types of Docker container deployments. These containers are created on each node and used to run the training Python script. The image used in the Machine Learning Compute cluster is created by Machine Learning in the local run and hyperparameter tuning notebooks, and then is pushed to Container Registry.
 
-[Azure Blob][blob] storage receives the training and test data sets from the Machine Learning service that are used by the training Python script. Storage is mounted as a virtual drive onto each node of a Machine Learning Compute cluster.
+[Azure Blob][blob] storage receives the training and test data sets from Machine Learning that are used by the training Python script. Storage is mounted as a virtual drive onto each node of a Machine Learning Compute cluster.
 
 ## Performance considerations
 
@@ -102,17 +104,18 @@ For scenarios with more sensitive data, make sure that all of your storage keys 
 
 ### Encrypt data at rest and in motion
 
-In scenarios that use sensitive data, encrypt the data at rest—that is, the data in storage. Each time data moves from one location to the next, use SSL to secure the data transfer. For more information, see the [Azure Storage security guide][storage-security].
+In scenarios that use sensitive data, encrypt the data at rest-that is, the data in storage. Each time data moves from one location to the next, use SSL to secure the data transfer. For more information, see the [Azure Storage security guide][storage-security].
 
 ### Secure data in a virtual network
 
-For production deployments, consider deploying the cluster into a subnet of a virtual network that you specify. This allows the compute nodes in the cluster to communicate securely with other virtual machines or with an on-premises network. You can also use [service endpoints][endpoints] with blob storage to grant access from a virtual network or use a single-node NFS inside the virtual network with Azure Machine Learning service.
+For production deployments, consider deploying the cluster into a subnet of a virtual network that you specify. This allows the compute nodes in the cluster to communicate securely with other virtual machines or with an on-premises network. You can also use [service endpoints][endpoints] with blob storage to grant access from a virtual network or use a single-node NFS inside the virtual network with Azure Machine Learning.
 
 ## Deployment
 
-To deploy the reference implementation for this architecture, follow the steps described in the Github repos:
--  [Regular Python models][github1] 
--  [Deep learning models][github2] 
+To deploy the reference implementation for this architecture, follow the steps described in the GitHub repos:
+
+- [Regular Python models][github1]
+- [Deep learning models][github2]
 
 ## Next steps
 
@@ -120,25 +123,23 @@ To operationalize the model, see [Machine learning operationalization (MLOps) fo
 
 [0]: ./_images//training-python-models.png
 [1]: ./_images/run-object.png
-[acr]: /azure/container-registry/container-registry-intro
-[ai]: /azure/application-insights/app-insights-overview
-[aml]: /azure/machine-learning/service/overview-what-is-azure-ml
-[aml-compute]: /azure/machine-learning/service/concept-compute-target
-[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
-[blob]: /azure/storage/blobs/storage-blobs-introduction
-[dsvm]: /azure/machine-learning/data-science-virtual-machine/overview
-[endpoints]: /azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network
+[acr]: https://docs.microsoft.com/azure/container-registry/container-registry-intro
+[aml]: https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml
+[aml-compute]: https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target
+[blob]: https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction
+[dsvm]: https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview
+[endpoints]: https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network
 [github1]: https://github.com/Microsoft/MLHyperparameterTuning
 [github2]: https://github.com/Microsoft/HyperdriveDeepLearning
-[hyperparameter]: /azure/machine-learning/service/how-to-tune-hyperparameters
+[hyperparameter]: https://docs.microsoft.com/azure/machine-learning/service/how-to-tune-hyperparameters
 [jupyter]: http://jupyter.org/widgets
 [lightgbm]: https://github.com/Microsoft/LightGBM
-[mlops]: /azure/machine-learning/service/concept-model-management-and-deployment
-[pipeline]: /azure/machine-learning/service/concept-ml-pipelines
-[scaling]: /azure/virtual-machine-scale-sets/overview
-[scikit]: https://pypi.org/project/scikit-learn/
+[mlops]: https://docs.microsoft.com/azure/machine-learning/service/concept-model-management-and-deployment
+[pipeline]: https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines
+[scaling]: https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview
+[scikit]: https://pypi.org/project/scikit-learn
 [scikit-sample]:/azure/machine-learning/service/how-to-train-scikit-learn
-[storage]: /azure/storage/common/storage-introduction
-[storage-security]: /azure/storage/common/storage-security-guide
-[target]: /azure/machine-learning/service/how-to-auto-train-remote
-[training-deep-learning]: /azure/architecture/reference-architectures/ai/training-deep-learning
+[storage]: https://docs.microsoft.com/azure/storage/common/storage-introduction
+[storage-security]: https://docs.microsoft.com/azure/storage/common/storage-security-guide
+[target]: https://docs.microsoft.com/azure/machine-learning/service/how-to-auto-train-remote
+[training-deep-learning]: ./training-deep-learning.md

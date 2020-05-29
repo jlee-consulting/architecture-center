@@ -6,6 +6,9 @@ author: jiata
 ms.date: 02/06/2019
 ms.topic: reference-architecture
 ms.service: architecture-center
+ms.category:
+  - ai-machine-learning
+  - media
 ms.subservice: reference-architecture
 ms.custom: azcat-ai
 ---
@@ -41,11 +44,11 @@ This architecture consists of the following components.
 
 ### Compute
 
-**[Azure Machine Learning Service][amls]** uses pipelines to create reproducible and easy-to-manage sequences of computation. It also offers a managed compute target (on which a pipeline computation can run) called [Azure Machine Learning Compute][aml-compute] for training, deploying, and scoring machine learning models.
+**[Azure Machine Learning][amls]** uses pipelines to create reproducible and easy-to-manage sequences of computation. It also offers a managed compute target (on which a pipeline computation can run) called [Azure Machine Learning Compute][aml-compute] for training, deploying, and scoring machine learning models.
 
 ### Storage
 
-**[Blob storage][blob-storage]** is used to store all images (input images, style images, and output images). Azure Machine Learning Service integrates with Blob storage so that users do not have to manually move data across compute platforms and Blob storage. Blob storage is also very cost-effective for the performance that this workload requires.
+**[Blob storage][blob-storage]** is used to store all images (input images, style images, and output images). Azure Machine Learning integrates with Blob storage so that users do not have to manually move data across compute platforms and Blob storage. Blob storage is also very cost-effective for the performance that this workload requires.
 
 ### Trigger / scheduling
 
@@ -77,7 +80,7 @@ For this workload, these two options will have comparable performance. Using few
 
 ### MPI step
 
-When creating the [Azure Machine Learning service pipeline][aml-pipeline], one of the steps used to perform parallel computation is the MPI step. The MPI step will help split the data evenly across the available nodes. The MPI step will not executed until all the requested nodes are ready. Should one node fail or get preempted (if it is a low-priority virtual machine), the MPI step will have to be rerun.
+When creating the [Azure Machine Learning pipeline][aml-pipeline], one of the steps used to perform parallel computation is the MPI step. The MPI step will help split the data evenly across the available nodes. The MPI step will not executed until all the requested nodes are ready. Should one node fail or get preempted (if it is a low-priority virtual machine), the MPI step will have to be rerun.
 
 ## Security considerations
 
@@ -134,23 +137,19 @@ Azure Machine Learning Compute also supports low-priority virtual machines. This
 To deploy this reference architecture, follow the steps described in the [GitHub repo][deployment].
 
 > [!NOTE]
-> You can also deploy a batch scoring architecture for deep learning models using the Azure Kubernetes Service. Follow the steps described in this [Github repo][deployment2].
+> You can also deploy a batch scoring architecture for deep learning models using the Azure Kubernetes Service. Follow the steps described in this [GitHub repo][deployment2].
 
 <!-- links -->
 
-[aml-compute]: /azure/machine-learning/service/concept-compute-target
-[aml-pipeline]: /azure/machine-learning/service/concept-ml-pipelines
-[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
-[azcopy]: /azure/storage/common/storage-use-azcopy-linux
-[blob-storage]: /azure/storage/blobs/storage-blobs-introduction
-[container-instances]: /azure/container-instances/
-[container-registry]: /azure/container-registry/
+[aml-compute]: https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target
+[aml-pipeline]: https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines
+[amls]: https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml
+[blob-storage]: https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction
 [deployment]: https://github.com/Azure/Batch-Scoring-Deep-Learning-Models-With-AML
 [deployment2]: https://github.com/Azure/Batch-Scoring-Deep-Learning-Models-With-AKS
-[ffmpeg]: https://www.ffmpeg.org/
+[ffmpeg]: https://www.ffmpeg.org
 [image-style-transfer]: https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf
-[logic-apps]: /azure/logic-apps/
+[logic-apps]: https://docs.microsoft.com/azure/logic-apps
 [source-video]: https://happypathspublic.blob.core.windows.net/videos/orangutan.mp4
-[storage-security]: /azure/storage/common/storage-security-guide
-[vm-sizes-gpu]: /azure/virtual-machines/windows/sizes-gpu
-[virtual-network]: /azure/machine-learning/service/how-to-enable-virtual-network
+[storage-security]: https://docs.microsoft.com/azure/storage/common/storage-security-guide
+[virtual-network]: https://docs.microsoft.com/azure/machine-learning/service/how-to-enable-virtual-network

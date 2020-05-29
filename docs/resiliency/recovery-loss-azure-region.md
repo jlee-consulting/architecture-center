@@ -1,11 +1,11 @@
 ---
 title: Recover from loss of an Azure region
-description: Understanding and designing resilient, highly available, fault tolerant applications as well as planning for disaster recovery.
+description: Design resilient, highly available, fault-tolerant applications and plan for disaster recovery.
 author: adamglick
 ms.date: 08/18/2016
 ms.topic: article
 ms.service: architecture-center
-ms.subservice: cloud-design-principles
+ms.subservice: well-architected
 ms.custom: resiliency
 ---
 
@@ -53,6 +53,9 @@ Recovery of infrastructure as a service (IaaS) virtual machines (VMs) is similar
 
 - **Be aware of potential consistency issues after a geo-failover of multiple VM Disks**. VM Disks are implemented as Azure Storage blobs, and have the same geo-replication characteristic. Unless [Azure Backup](https://azure.microsoft.com/services/backup) is used, there are no guarantees of consistency across disks, because geo-replication is asynchronous and replicates independently. Individual VM disks are guaranteed to be in a crash consistent state after a geo-failover, but not consistent across disks. This could cause problems in some cases (for example, in the case of disk striping).
 
+- **Use Azure Site Recovery to replicate applications across regions**.
+  With [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery), customers don't need to worry about separating data disks from operating system disks or about potential consistency issues. Azure Site Recovery replicates workloads running on physical and virtual machines from a primary site (either on-premises or in Azure) to a secondary location (in Azure). When an outage occurs at the customer's primary site, a failover can be triggered to quickly return the customer to an operational state. After the primary location is restored, customers can then fail back. They can easily replicate using recovery points with application-consistent snapshots. These snapshots capture disk data, all in-memory data, and all in-process transactions. Azure Site Recovery allows customers to keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Customers can also easily run disaster recovery drills without affecting applications in production. Using recovery plans, customers can sequence the failover and recovery of multitier applications running on multiple VMs. They can group machines together in a recovery plan, and optionally add scripts and manual actions. Recovery plans can be integrated with Azure Automation runbooks.
+
 ## Storage
 
 ### Recovery by using geo-redundant storage of blob, table, queue, and VM disk storage
@@ -63,11 +66,11 @@ If a geo-failover occurs, there will be no change to how the account is accessed
 
 In addition to automatic failover provided by GRS, Azure has introduced a service that gives you read access to the copy of your data in the secondary storage location. This is called read-access geo-redundant storage (RA-GRS).
 
-For more information about both GRS and RA-GRS storage, see [Azure Storage replication](/azure/storage/storage-redundancy).
+For more information about both GRS and RA-GRS storage, see [Azure Storage replication](https://docs.microsoft.com/azure/storage/storage-redundancy).
 
 ### Geo-replication region mappings
 
-It is important to know where your data is geo-replicated, in order to know where to deploy the other instances of your data that require regional affinity with your storage. For more information, see [Azure Paired Regions](/azure/best-practices-availability-paired-regions).
+It is important to know where your data is geo-replicated, in order to know where to deploy the other instances of your data that require regional affinity with your storage. For more information, see [Azure Paired Regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 ### Geo-replication pricing
 
@@ -83,10 +86,6 @@ If a geo-failover occurs, this will be posted to the [Azure Service Health Dashb
     <GeoSecondaryRegion>secondary-region</GeoSecondaryRegion>
     <StatusOfSecondary>[Available|Unavailable]</StatusOfSecondary>
 
-### VM disks and geo-failover
-
-As discussed in the section on VM disks, there are no guarantees for data consistency across VM disks after a failover. To ensure correctness of backups, a backup product such as Data Protection Manager should be used to back up and restore application data.
-
 ## Database
 
 ### SQL Database
@@ -95,15 +94,15 @@ Azure SQL Database provides two types of recovery: geo-restore and active geo-re
 
 #### Geo-restore
 
-[Geo-restore](/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) is also available with Basic, Standard, and Premium databases. It provides the default recovery option when the database is unavailable because of an incident in the region where your database is hosted. Similar to point-in-time restore, geo-restore relies on database backups in geo-redundant Azure storage. It restores from the geo-replicated backup copy, and therefore is resilient to the storage outages in the primary region. For more information, see [Restore an Azure SQL Database or failover to a secondary](/azure/sql-database/sql-database-disaster-recovery).
+[Geo-restore](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) is also available with Basic, Standard, and Premium databases. It provides the default recovery option when the database is unavailable because of an incident in the region where your database is hosted. Similar to point-in-time restore, geo-restore relies on database backups in geo-redundant Azure storage. It restores from the geo-replicated backup copy, and therefore is resilient to the storage outages in the primary region. For more information, see [Restore an Azure SQL Database or failover to a secondary](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery).
 
 #### Active geo-replication
 
-[Active geo-replication](/azure/sql-database/sql-database-geo-replication-overview) is available for all database tiers. It’s designed for applications that have more aggressive recovery requirements than geo-restore can offer. Using active geo-replication, you can create up to four readable secondaries on servers in different regions. You can initiate failover to any of the secondaries. In addition, active geo-replication can be used to support the application upgrade or relocation scenarios, as well as load balancing for read-only workloads. For details, see [Configure active geo-replication for Azure SQL Database and initiate failover](/azure/sql-database/sql-database-geo-replication-portal). Refer to [Designing globally available services using Azure SQL Database](/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery) and [Managing rolling upgrades of cloud applications by using SQL Database active geo-replication](/azure/sql-database/sql-database-manage-application-rolling-upgrade) for details on how to design and implement applications and applications upgrade without downtime.
+[Active geo-replication](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) is available for all database tiers. It’s designed for applications that have more aggressive recovery requirements than geo-restore can offer. Using active geo-replication, you can create up to four readable secondaries on servers in different regions. You can initiate failover to any of the secondaries. In addition, active geo-replication can be used to support the application upgrade or relocation scenarios, as well as load balancing for read-only workloads. For details, see [Configure active geo-replication for Azure SQL Database and initiate failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-portal). Refer to [Designing globally available services using Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery) and [Managing rolling upgrades of cloud applications by using SQL Database active geo-replication](https://docs.microsoft.com/azure/sql-database/sql-database-manage-application-rolling-upgrade) for details on how to design and implement applications and applications upgrade without downtime.
 
 ### SQL Server on Azure Virtual Machines
 
-A variety of options are available for recovery and high availability for SQL Server 2012 (and later) running in Azure Virtual Machines. For more information, see [High availability and disaster recovery for SQL Server in Azure Virtual Machines](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr).
+A variety of options are available for recovery and high availability for SQL Server 2012 (and later) running in Azure Virtual Machines. For more information, see [High availability and disaster recovery for SQL Server in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr).
 
 ## Other Azure platform services
 
@@ -114,7 +113,7 @@ When attempting to run your cloud service in multiple Azure regions, you must co
 
 ### Service Bus
 
-Azure Service Bus uses a unique namespace that does not span Azure regions. So the first requirement is to set up the necessary service bus namespaces in the alternate region. However, there are also considerations for the durability of the queued messages. There are several strategies for replicating messages across Azure regions. For the details on these replication strategies and other disaster recovery strategies, see [Best practices for insulating applications against Service Bus outages and disasters](/azure/service-bus-messaging/service-bus-outages-disasters).
+Azure Service Bus uses a unique namespace that does not span Azure regions. So the first requirement is to set up the necessary service bus namespaces in the alternate region. However, there are also considerations for the durability of the queued messages. There are several strategies for replicating messages across Azure regions. For the details on these replication strategies and other disaster recovery strategies, see [Best practices for insulating applications against Service Bus outages and disasters](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-outages-disasters).
 
 ### App Service
 
@@ -134,7 +133,7 @@ Azure Media Services has a different recovery approach for encoding and streamin
 
 ### Virtual network
 
-Configuration files provide the quickest way to set up a virtual network in an alternate Azure region. After configuring the virtual network in the primary Azure region, [export the virtual network settings](/azure/virtual-network/virtual-networks-create-vnet-classic-portal) for the current network to a network configuration file. If an outage occurs in the primary region, [restore the virtual network](/azure/virtual-network/virtual-networks-create-vnet-classic-portal) from the stored configuration file. Then configure other cloud services, virtual machines, or cross-premises settings to work with the new virtual network.
+Configuration files provide the quickest way to set up a virtual network in an alternate Azure region. After configuring the virtual network in the primary Azure region, [export the virtual network settings](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-vnet-classic-portal) for the current network to a network configuration file. If an outage occurs in the primary region, [restore the virtual network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-vnet-classic-portal) from the stored configuration file. Then configure other cloud services, virtual machines, or cross-premises settings to work with the new virtual network.
 
 ## Checklists for disaster recovery
 
@@ -160,7 +159,7 @@ Configuration files provide the quickest way to set up a virtual network in an a
 ### SQL Database checklist
 
 1. Review the SQL Database section of this document.
-2. Use [geo-restore](/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) or [geo-replication](/azure/sql-database/sql-database-geo-replication-overview) as appropriate.
+2. Use [geo-restore](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups/#geo-restore) or [geo-replication](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) as appropriate.
 
 ### SQL Server on Virtual Machines checklist
 

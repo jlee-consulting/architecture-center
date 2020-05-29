@@ -61,13 +61,13 @@ The most important factor is the choice of a sharding key. It can be difficult t
 
 The shards don't have to be the same size. It's more important to balance the number of requests. Some shards might be very large, but each item has a low number of access operations. Other shards might be smaller, but each item is accessed much more frequently. It's also important to ensure that a single shard does not exceed the scale limits (in terms of capacity and processing resources) of the data store.
 
-Avoid creating "hot" partitions that can affect performance and availability. For example, using the first letter of a customer’s name causes an unbalanced distribution, because some letters are more common. Instead, use a hash of a customer identifier to distribute data more evenly across partitions.
+Avoid creating "hot" partitions that can affect performance and availability. For example, using the first letter of a customer's name causes an unbalanced distribution, because some letters are more common. Instead, use a hash of a customer identifier to distribute data more evenly across partitions.
 
 Choose a sharding key that minimizes any future requirements to split large shards, coalesce small shards into larger partitions, or change the schema. These operations can be very time consuming, and might require taking one or more shards offline while they are performed.
 
 If shards are replicated, it might be possible to keep some of the replicas online while others are split, merged, or reconfigured. However, the system might need to limit the operations that can be performed during the reconfiguration. For example, the data in the replicas might be marked as read-only to prevent data inconsistences.
 
-For more information about horizontal partitioning, see [Sharding pattern].
+For more information about horizontal partitioning, see [sharding pattern](../patterns/sharding.md).
 
 ### Vertical partitioning
 
@@ -106,13 +106,13 @@ It's vital to consider size and workload for each partition and balance them so 
 Follow these steps when designing partitions for scalability:
 
 1. Analyze the application to understand the data access patterns, such as the size of the result set returned by each query, the frequency of access, the inherent latency, and the server-side compute processing requirements. In many cases, a few major entities will demand most of the processing resources.
-2. Use this analysis to determine the current and future scalability targets, such as data size and workload. Then distribute the data across the partitions to meet the scalability target. For horizontal partitioning, choosing the right shard key is important to make sure distribution is even. For more information, see the [Sharding pattern].
+2. Use this analysis to determine the current and future scalability targets, such as data size and workload. Then distribute the data across the partitions to meet the scalability target. For horizontal partitioning, choosing the right shard key is important to make sure distribution is even. For more information, see the [sharding pattern](../patterns/sharding.md).
 3. Make sure each partition has enough resources to handle the scalability requirements, in terms of data size and throughput. Depending on the data store, there might be a limit on the amount of storage space, processing power, or network bandwidth per partition. If the requirements are likely to exceed these limits, you may need to refine your partitioning strategy or split data out further, possibly combining two or more strategies.
 4. Monitor the system to verify that data is distributed as expected and that the partitions can handle the load. Actual usage does not always match what an analysis predicts. If so, it might be possible to rebalance the partitions, or else redesign some parts of the system to gain the required balance.
 
 Some cloud environments allocate resources in terms of infrastructure boundaries. Ensure that the limits of your selected boundary provide enough room for any anticipated growth in the volume of data, in terms of data storage, processing power, and bandwidth.
 
-For example, if you use Azure table storage, there is a limit to the volume of requests that can be handled by a single partition in a particular period of time. (See [Azure storage scalability and performance targets].) A busy shard might require more resources than a single partition can handle. If so, the shard might need to be repartitioned to spread the load. If the total size or throughput of these tables exceeds the capacity of a storage account, you might need to create additional storage accounts and spread the tables across these accounts.
+For example, if you use Azure table storage, there is a limit to the volume of requests that can be handled by a single partition in a particular period of time. (For more information, see [Azure storage scalability and performance targets](https://docs.microsoft.com/azure/storage/storage-scalability-targets).) A busy shard might require more resources than a single partition can handle. If so, the shard might need to be repartitioned to spread the load. If the total size or throughput of these tables exceeds the capacity of a storage account, you might need to create additional storage accounts and spread the tables across these accounts.
 
 ## Designing partitions for query performance
 
@@ -245,5 +245,3 @@ The following design patterns might be relevant to your scenario:
 ## Next steps
 
 - Learn about partitioning strategies for specific Azure services. See [Data partitioning strategies](./data-partitioning-strategies.md)
-
-[Azure Storage Scalability and Performance Targets]: /azure/storage/storage-scalability-targets

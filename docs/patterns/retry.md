@@ -45,7 +45,7 @@ The application should wrap all attempts to access a remote service in code that
 
 An application should log the details of faults and failing operations. This information is useful to operators. If a service is frequently unavailable or busy, it's often because the service has exhausted its resources. You can reduce the frequency of these faults by scaling out the service. For example, if a database service is continually overloaded, it might be beneficial to partition the database and spread the load across multiple servers.
 
-> [Microsoft Entity Framework](/ef) provides facilities for retrying database operations. Also, most Azure services and client SDKs include a retry mechanism. For more information, see [Retry guidance for specific services](/azure/architecture/best-practices/retry-service-specific).
+> [Microsoft Entity Framework](https://docs.microsoft.com/ef) provides facilities for retrying database operations. Also, most Azure services and client SDKs include a retry mechanism. For more information, see [Retry guidance for specific services](../best-practices/retry-service-specific.md).
 
 ## Issues and considerations
 
@@ -173,3 +173,5 @@ private bool IsTransient(Exception ex)
 - For most Azure services, the client SDKs include built-in retry logic. For more information, see [Retry guidance for Azure services](../best-practices/retry-service-specific.md).
 
 - Before writing custom retry logic, consider using a general framework such as [Polly](https://github.com/App-vNext/Polly) for .NET or [Resilience4j](https://github.com/resilience4j/resilience4j) for Java.
+
+- When processing commands that change business data, be aware that retries can result in the action being performed twice, which could be problematic if that action is something like charging a customer's credit card. Using the Idempotence pattern described in [this blog post](https://particular.net/blog/what-does-idempotent-mean) can help deal with these situations.

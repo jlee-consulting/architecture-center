@@ -1,6 +1,6 @@
 ---
 title: Choosing a cognitive services technology
-description: 
+description: Learn about Microsoft cognitive services that you can use in artificial intelligence applications and data flows.
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
@@ -44,7 +44,7 @@ In Azure, there are dozens of Cognitive Services available. The current listing 
 
 - [Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)
 - [Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)
-- [Knowledge](https://azure.microsoft.com/services/cognitive-services/directory/know/)
+- [Decision](https://azure.microsoft.com/services/cognitive-services/directory/decision/)
 - [Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)
 - [Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)
 

@@ -1,17 +1,20 @@
 ---
 title: Batch scoring of Python models on Azure
-description:  Build a scalable solution for batch scoring models on a schedule in parallel using Azure Machine Learning Service.
+description:  Build a scalable solution for batch scoring models on a schedule in parallel using Azure Machine Learning.
 author: njray
 ms.date: 01/30/2019
 ms.topic: reference-architecture
 ms.service: architecture-center
+ms.category:
+  - ai-machine-learning
+  - developer-tools
 ms.subservice: reference-architecture
 ms.custom: azcat-ai, AI
 ---
 
 # Batch scoring of Python machine learning models on Azure
 
-This reference architecture shows how to build a scalable solution for batch scoring many models on a schedule in parallel using [Azure Machine Learning Service][amls]. The solution can be used as a template and can generalize to different problems.
+This reference architecture shows how to build a scalable solution for batch scoring many models on a schedule in parallel using [Azure Machine Learning][amls]. The solution can be used as a template and can generalize to different problems.
 
 A reference implementation for this architecture is available on [GitHub][github].
 
@@ -37,7 +40,7 @@ This architecture consists of the following components:
 
 [Azure SQL Database][sql-database]. Data from the sensor readings is loaded into SQL Database. SQL is a familiar way to store the processed, streamed data (which is tabular and structured), but other data stores can be used.
 
-[Azure Machine Learning Service][amls]. Azure Machine Learning service is a cloud service for training, scoring, deploying, and managing machine learning models at scale. In the context of batch scoring, Azure Machine Learning service creates a cluster of virtual machines on demand with an automatic scaling option, where each node in the cluster runs a scoring job for a specific sensor. The scoring jobs are executed in parallel as Python-script steps that are queued and managed by the service. These steps are part of a Machine Learning service pipeline that is created, published, and scheduled to run on a predefined interval of time.
+[Azure Machine Learning][amls]. Azure Machine Learning is a cloud service for training, scoring, deploying, and managing machine learning models at scale. In the context of batch scoring, Azure Machine Learning creates a cluster of virtual machines on demand with an automatic scaling option, where each node in the cluster runs a scoring job for a specific sensor. The scoring jobs are executed in parallel as Python-script steps that are queued and managed by the service. These steps are part of a Machine Learning pipeline that is created, published, and scheduled to run on a predefined interval of time.
 
 [Azure Blob Storage][storage]. Blob containers are used to store the pretrained models, the data, and the output predictions. The models are uploaded to Blob storage in the [01_create_resources.ipynb][create-resources] notebook. These [one-class SVM][one-class-svm] models are trained on data that represents values of different sensors for different devices. This solution assumes that the data values are aggregated over a fixed interval of time.
 
@@ -61,11 +64,11 @@ For convenience in this scenario, one scoring task is submitted within a single 
 ## Management considerations
 
 - **Monitor jobs**. It's important to monitor the progress of running jobs, but it can be a challenge to monitor across a cluster of active nodes. To inspect the state of the nodes in the cluster, use the [Azure portal][portal] to manage the [machine learning workspace][ml-workspace]. If a node is inactive or a job has failed, the error logs are saved to blob storage, and are also accessible in the Pipelines section. For richer monitoring, connect logs to [Application Insights][app-insights], or run separate processes to poll for the state of the cluster and its jobs.
-- **Logging**. Machine Learning Service logs all stdout/stderr to the associated Azure Storage account. To easily view the log files, use a storage navigation tool such as [Azure Storage Explorer][explorer].
+- **Logging**. Machine Learning logs all stdout/stderr to the associated Azure Storage account. To easily view the log files, use a storage navigation tool such as [Azure Storage Explorer][explorer].
 
 ## Cost considerations
 
-The most expensive components used in this reference architecture are the compute resources. The compute cluster size scales up and down depending on the jobs in the queue. Enable automatic scaling programmatically through the [Python SDK][python-sdk] by modifying the compute’s provisioning configuration. Or use the [Azure CLI][cli] to set the automatic scaling parameters of the cluster.
+The most expensive components used in this reference architecture are the compute resources. The compute cluster size scales up and down depending on the jobs in the queue. Enable automatic scaling programmatically through the [Python SDK][python-sdk] by modifying the compute's provisioning configuration. Or use the [Azure CLI][cli] to set the automatic scaling parameters of the cluster.
 
 For work that doesn't require immediate processing, configure the automatic scaling formula so the default state (minimum) is a cluster of zero nodes. With this configuration, the cluster starts with zero nodes and only scales up when it detects jobs in the queue. If the batch scoring process happens only a few times a day or less, this setting enables significant cost savings.
 
@@ -75,27 +78,22 @@ Automatic scaling may not be appropriate for batch jobs that happen too close to
 
 To deploy this reference architecture, follow the steps described in the [GitHub repo][github].
 
-[acr]: /azure/container-registry/container-registry-intro
-[ai]: /azure/application-insights/app-insights-overview
-[aml-compute]: /azure/machine-learning/service/how-to-set-up-training-targets#amlcompute
-[amls]: /azure/machine-learning/service/overview-what-is-azure-ml
-[automatic-scaling]: /azure/batch/batch-automatic-scaling
-[azure-files]: /azure/storage/files/storage-files-introduction
-[batch-scoring]: /azure/machine-learning/service/how-to-run-batch-predictions
-[cli]: /cli/azure
-[create-resources]: https://github.com/Microsoft/AMLBatchScoringPipeline/blob/master/01_create_resources.ipynb
+[acr]: https://docs.microsoft.com/azure/container-registry/container-registry-intro
+[amls]: https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml
+[batch-scoring]: https://docs.microsoft.com/azure/machine-learning/service/how-to-run-batch-predictions
+[cli]: https://docs.microsoft.com/cli/azure
+[create-resources]: https://github.com/microsoft/az-ml-batch-score/blob/master/01_DataPrep.ipynb
 [deep]: /azure/architecture/reference-architectures/ai/batch-scoring-deep-learning
-[event-hubs]: /azure/event-hubs/event-hubs-geo-dr
-[explorer]: https://azure.microsoft.com/en-us/features/storage-explorer/
+[event-hubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr
+[explorer]: https://azure.microsoft.com/features/storage-explorer
 [github]: https://github.com/Microsoft/AMLBatchScoringPipeline
 [one-class-svm]: http://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html
 [portal]: https://portal.azure.com
-[python-sdk]: /python/api/overview/azure/ml/intro
-[ml-workspace]: /azure/machine-learning/studio/create-workspace
-[pipeline]: /azure/machine-learning/service/concept-ml-pipelines
-[python-script]: https://github.com/Azure/BatchAIAnomalyDetection/blob/master/batchai/predict.py
+[python-sdk]: https://docs.microsoft.com/python/api/overview/azure/ml/intro
+[ml-workspace]: https://docs.microsoft.com/azure/machine-learning/studio/create-workspace
+[pipeline]: https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines
 [pyscript]: https://github.com/Microsoft/AMLBatchScoringPipeline/blob/master/scripts/predict.py
-[storage]: /azure/storage/blobs/storage-blobs-overview
-[stream-analytics]: /azure/stream-analytics/
-[sql-database]: /azure/sql-database/
-[app-insights]: /azure/application-insights/app-insights-overview
+[storage]: https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview
+[stream-analytics]: https://docs.microsoft.com/azure/stream-analytics
+[sql-database]: https://docs.microsoft.com/azure/sql-database
+[app-insights]: https://docs.microsoft.com/azure/application-insights/app-insights-overview

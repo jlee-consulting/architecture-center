@@ -2,17 +2,20 @@
 title: Hub-spoke network topology in Azure
 titleSuffix: Azure Reference Architectures
 description: This reference architecture deploys a hub-spoke network topology in Azure.
-author: MikeWasson
-ms.date: 08/19/2019
+author: adamboeglin
+ms.date: 05/21/2020
 ms.topic: reference-architecture
 ms.service: architecture-center
+ms.category:
+  - networking
+  - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: seodec18, networking
+ms.custom: seodec18, networking, fcp
 ---
 
 # Hub-spoke network topology in Azure
 
-This reference architecture shows how to implement a hub-spoke topology in Azure. The *hub* is a virtual network (VNet) in Azure that acts as a central point of connectivity to your on-premises network. The *spokes* are VNets that peer with the hub, and can be used to isolate workloads. Traffic flows between the on-premises datacenter and the hub through an ExpressRoute or VPN gateway connection. [**Deploy this solution**](#deploy-the-solution).
+This reference architecture shows how to implement a hub-spoke topology in Azure. The *hub* is a virtual network in Azure that acts as a central point of connectivity to your on-premises network. The *spokes* are virtual networks that peer with the hub, and can be used to isolate workloads. Traffic flows between the on-premises datacenter and the hub through an ExpressRoute or VPN gateway connection. [**Deploy this solution**](#deploy-the-solution).
 
 ![[0]][0]
 
@@ -21,12 +24,12 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
 The benefits of this topology include:
 
 - **Cost savings** by centralizing services that can be shared by multiple workloads, such as network virtual appliances (NVAs) and DNS servers, in a single location.
-- **Overcome subscriptions limits** by peering VNets from different subscriptions to the central hub.
+- **Overcome subscriptions limits** by peering virtual networks from different subscriptions to the central hub.
 - **Separation of concerns** between central IT (SecOps, InfraOps) and workloads (DevOps).
 
 Typical uses for this architecture include:
 
-- Workloads deployed in different environments, such as development, testing, and production, that require shared services such as DNS, IDS, NTP, or AD DS. Shared services are placed in the hub VNet, while each environment is deployed to a spoke to maintain isolation.
+- Workloads deployed in different environments, such as development, testing, and production, that require shared services such as DNS, IDS, NTP, or AD DS. Shared services are placed in the hub virtual network, while each environment is deployed to a spoke to maintain isolation.
 - Workloads that do not require connectivity to each other, but require access to shared services.
 - Enterprises that require central control over security aspects, such as a firewall in the hub as a DMZ, and segregated management for the workloads in each spoke.
 
@@ -38,21 +41,21 @@ The architecture consists of the following components.
 
 - **VPN device**. A device or service that provides external connectivity to the on-premises network. The VPN device may be a hardware device, or a software solution such as the Routing and Remote Access Service (RRAS) in Windows Server 2012. For a list of supported VPN appliances and information on configuring selected VPN appliances for connecting to Azure, see [About VPN devices for Site-to-Site VPN Gateway connections][vpn-appliance].
 
-- **VPN virtual network gateway or ExpressRoute gateway**. The virtual network gateway enables the VNet to connect to the VPN device, or ExpressRoute circuit, used for connectivity with your on-premises network. For more information, see [Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet].
+- **VPN virtual network gateway or ExpressRoute gateway**. The virtual network gateway enables the virtual network to connect to the VPN device, or ExpressRoute circuit, used for connectivity with your on-premises network. For more information, see [Connect an on-premises network to a Microsoft Azure virtual network][connect-to-an-Azure-vnet].
 
-> [!NOTE]
-> The deployment scripts for this reference architecture use a VPN gateway for connectivity, and a VNet in Azure to simulate your on-premises network.
+   > [!NOTE]
+   > The deployment scripts for this reference architecture use a VPN gateway for connectivity, and a virtual network in Azure to simulate your on-premises network.
 
-- **Hub VNet**. Azure VNet used as the hub in the hub-spoke topology. The hub is the central point of connectivity to your on-premises network, and a place to host services that can be consumed by the different workloads hosted in the spoke VNets.
+- **Hub virtual network**. The virtual network used as the hub in the hub-spoke topology. The hub is the central point of connectivity to your on-premises network, and a place to host services that can be consumed by the different workloads hosted in the spoke virtual networks.
 
 - **Gateway subnet**. The virtual network gateways are held in the same subnet.
 
-- **Spoke VNets**. One or more Azure VNets that are used as spokes in the hub-spoke topology. Spokes can be used to isolate workloads in their own VNets, managed separately from other spokes. Each workload might include multiple tiers, with multiple subnets connected through Azure load balancers. For more information about the application infrastructure, see [Running Windows VM workloads][windows-vm-ra] and [Running Linux VM workloads][linux-vm-ra].
+- **Spoke virtual networks**. One or more virtual networks that are used as spokes in the hub-spoke topology. Spokes can be used to isolate workloads in their own virtual networks, managed separately from other spokes. Each workload might include multiple tiers, with multiple subnets connected through Azure load balancers. For more information about the application infrastructure, see [Running Windows VM workloads][windows-vm-ra] and [Running Linux VM workloads][linux-vm-ra].
 
-- **VNet peering**. Two VNets can be connected using a [peering connection][vnet-peering]. Peering connections are non-transitive, low latency connections between VNets. Once peered, the VNets exchange traffic by using the Azure backbone, without the need for a router. In a hub-spoke network topology, you use VNet peering to connect the hub to each spoke. You can peer virtual networks in the same region, or different regions. For more information, see [Requirements and constraints][vnet-peering-requirements].
+- **Virtual network peering**. Two virtual networks can be connected using a [peering connection][vnet-peering]. Peering connections are non-transitive, low latency connections between virtual networks. Once peered, the virtual networks exchange traffic by using the Azure backbone, without the need for a router. In a hub-spoke network topology, you use virtual network peering to connect the hub to each spoke. You can peer virtual networks in the same region, or different regions. For more information, see [Requirements and constraints][vnet-peering-requirements].
 
 > [!NOTE]
-> This article only covers [Resource Manager](/azure/azure-resource-manager/resource-group-overview) deployments, but you can also connect a classic VNet to a Resource Manager VNet in the same subscription. That way, your spokes can host classic deployments and still benefit from services shared in the hub.
+> This article only covers [Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) deployments, but you can also connect a classic virtual network to a Resource Manager virtual network in the same subscription. That way, your spokes can host classic deployments and still benefit from services shared in the hub.
 
 ## Recommendations
 
@@ -60,9 +63,9 @@ The following recommendations apply for most scenarios. Follow these recommendat
 
 ### Resource groups
 
-The hub VNet, and each spoke VNet, can be implemented in different resource groups, and even different subscriptions. When you peer virtual networks in different subscriptions, both subscriptions can be associated to the same or different Azure Active Directory tenant. This allows for a decentralized management of each workload, while sharing services maintained in the hub VNet.
+The hub and each spoke can be implemented in different resource groups, and even different subscriptions. When you peer virtual networks in different subscriptions, both subscriptions can be associated to the same or different Azure Active Directory tenant. This allows for a decentralized management of each workload, while sharing services maintained in the hub.
 
-### VNet and GatewaySubnet
+### Virtual network and GatewaySubnet
 
 Create a subnet named *GatewaySubnet*, with an address range of /27. This subnet is required by the virtual network gateway. Allocating 32 addresses to this subnet will help to prevent reaching gateway size limitations in the future.
 
@@ -75,33 +78,83 @@ For higher availability, you can use ExpressRoute plus a VPN for failover. See [
 
 A hub-spoke topology can also be used without a gateway, if you don't need connectivity with your on-premises network.
 
-### VNet peering
+### Virtual network peering
 
-VNet peering is a non-transitive relationship between two VNets. If you require spokes to connect to each other, consider adding a separate peering connection between those spokes.
+Virtual network peering is a non-transitive relationship between two virtual networks. If you require spokes to connect to each other, consider adding a separate peering connection between those spokes.
 
-However, if you have several spokes that need to connect with each other, you will run out of possible peering connections very quickly due to the [limitation on number of VNets peerings per VNet][vnet-peering-limit]. In this scenario, consider using user defined routes (UDRs) to force traffic destined to a spoke to be sent to Azure Firewall or an NVA acting as a router at the hub VNet. This will allow the spokes to connect to each other.
+However, if you have several spokes that need to connect with each other, you will run out of possible peering connections very quickly due to the limitation on number of virtual network peerings per virtual network. (For more information, see [Networking limits][vnet-peering-limit].) In this scenario, consider using user defined routes (UDRs) to force traffic destined to a spoke to be sent to Azure Firewall or an NVA acting as a router at the hub. This will allow the spokes to connect to each other.
 
-You can also configure spokes to use the hub VNet gateway to communicate with remote networks. To allow gateway traffic to flow from spoke to hub, and connect to remote networks, you must:
+You can also configure spokes to use the hub gateway to communicate with remote networks. To allow gateway traffic to flow from spoke to hub, and connect to remote networks, you must:
 
-- Configure the VNet peering connection in the hub to **allow gateway transit**.
-- Configure the VNet peering connection in each spoke to **use remote gateways**.
-- Configure all VNet peering connections to **allow forwarded traffic**.
+- Configure the peering connection in the hub to **allow gateway transit**.
+- Configure the peering connection in each spoke to **use remote gateways**.
+- Configure all peering connections to **allow forwarded traffic**.
+
+for additional information on [Create a peering](/azure/virtual-network/virtual-network-manage-peering#create-a-peering)
 
 ## Considerations
 
 ### Spoke connectivity
 
-If you require connectivity between spokes, consider deploying Azure Firewall or an NVA for routing in the hub, and using UDRs in the spoke to forward traffic to the hub. The deployment steps below include an optional step that sets up this configuration.
+If you require connectivity between spokes, consider deploying Azure Firewall or an NVA for routing in the hub, and using UDRs in the spoke to forward traffic to the hub. The deployment steps below include an optional step that sets up this configuration. 
 
 ![[2]][2]
 
 In this scenario, you must configure the peering connections to **allow forwarded traffic**.
 
+You can also use a VPN gateway to route traffic between spokes, although this will have impacts in terms of latency and throughput. Also, Azure Firewall or a network firewall appliance provides an additional layer of security.
+
 Also consider what services are shared in the hub, to ensure the hub scales for a larger number of spokes. For instance, if your hub provides firewall services, consider the bandwidth limits of your firewall solution when adding multiple spokes. You might want to move some of these shared services to a second level of hubs.
+
+## DevOps considerations
+
+In this architecture the entire networking infrastructure is created by using an [Azure Building Blocks][azbb] template, so it follows the IaC process for deploying the resources. To automate infrastructure deployment, you can use Azure DevOps Services or other CI/CD solutions. The deployment process is also idempotent - that is, repeatable to produce the same results. 
+
+Templates are also good for dependency tracking since they allow to define dependencies for resources that are deployed in the same template. For a given resource, there can be other resources that must exist before the resource is deployed.
+
+### Network monitoring
+
+Use the Network Watcher to monitor and troubleshoot the network components, tools like Traffic Analytics will show you the systems in your virtual networks that generate most traffic, so that you can visually identify bottlenecks before they degenerate into problems. Network Performance Manager is the right tool to monitor information about Microsoft ExpressRoute circuits. VPN diagnostics is another tool that can help troubleshooting site-to-site VPN connections connecting your applications to users on-premises.
+
+
+For more information see [Monitoring For DevOps][devops-monitoring] in the Azure Well-Architected Framework.
+
+### Network testing
+
+This architecture includes some testing steps to manually verify network connectivity, it uses jump box virtual machines in each virtual network. After the deployment is completed, use these instructions along with the network monitoring tools, to verify the correct operation of the network.
+
+For more information, see the DevOps section in [Well-Architected Framework][AAF-devops].
+
+
+## Cost considerations
+
+Centralizing services that can be shared by multiple workloads in a single location can be cost efficient.
+
+Use the [Azure pricing calculator][azure-pricing-calculator] to estimate costs. Other considerations are described in the Cost section in [Microsoft Azure Well-Architected Framework][aaf-cost].
+
+### Azure Firewall
+
+In this architecture, Azure Firewall is deployed in the hub, which provides an additional layer of security. Azure Firewall is cost effective, especially if it's used as a shared solution consumed by multiple workloads. Here are the Azure Firewall pricing models:
+- Fixed rate per deployment hour.
+- Data processed per GB to support auto scaling. 
+
+When compared to network virtual appliances (NVAs), with Azure Firewall you can save up to 30-50%. For more information see [Azure Firewall vs NVA][Firewall-NVA].
+
+### Virtual network peering
+
+You can use virtual network peering to route traffic between virtual networks by using private IP addresses. Here are some points:
+
+- Ingress and egress traffic is charged at both ends of the peered networks. 
+- Different zones have different transfer rates.
+
+   For instance, data transfer from a virtual network in zone 1 to another virtual network in zone 2, will incur outbound transfer rate for zone 1 and inbound rate for zone 2. For more information, see [Virtual network pricing][VN-pricing].
 
 ## Deploy the solution
 
-A deployment for this architecture is available on [GitHub][ref-arch-repo]. It uses VMs in each VNet to test connectivity. Two instances of each jumpbox are deployed &mdash; one Linux VM and one Windows VM. In a real deployment, you would deploy a single type. 
+> [!CAUTION]
+> "Don't use azbb - it is in sustain mode and the npm package is out of date"
+
+A deployment for this architecture is available on [GitHub][ref-arch-repo]. It uses VMs in each virtual network to test connectivity. Two instances of each jumpbox are deployed &mdash; one Linux VM and one Windows VM. In a real deployment, you would deploy a single type. 
 
 No shared services are deployed in the hub. For a version that includes shared services, see [Hub-spoke network topology with shared services in Azure](./shared-services.md).
 
@@ -214,7 +267,7 @@ To test connectivity from the simulated on-premises environment to the hub and s
 
 ### Add connectivity between spokes
 
-This step is optional. If you want to allow spokes to connect to each other, use [Azure Firewall](/azure/firewall/) to force traffic from spokes to the router when trying to connect to another spoke. Perform the following steps to deploy Azure Firewall, firewall rules to allow RDP and SSH, and user-defined routes (UDRs) to allow the two spoke VNets to connect:
+This step is optional. If you want to allow spokes to connect to each other, use [Azure Firewall](https://docs.microsoft.com/azure/firewall/) to force traffic from spokes to the router when trying to connect to another spoke. Perform the following steps to deploy Azure Firewall, firewall rules to allow RDP and SSH, and user-defined routes (UDRs) to allow the two spoke virtual networks to connect:
 
 1. Navigate to the `hybrid-networking/hub-spoke` folder of the reference architectures repository.
 
@@ -271,25 +324,28 @@ For a version of this architecture that deploys shared identity and security ser
 
 <!-- links -->
 
+[aaf-cost]: ../../framework/cost/overview.md
+[AAF-devops]: /azure/architecture/framework/devops/overview
 [azure-cli-2]: /azure/install-azure-cli
+[azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator
 [azbb]: https://github.com/mspnp/template-building-blocks/wiki/Install-Azure-Building-Blocks
 [azure-vpn-gateway]: /azure/vpn-gateway/vpn-gateway-about-vpngateways
 [connect-to-an-Azure-vnet]: https://technet.microsoft.com/library/dn786406.aspx
+[devops-monitoring]: https://docs.microsoft.com/azure/architecture/framework/devops/monitoring
+[Firewall-NVA]: https://azure.microsoft.com/blog/azure-firewall-and-network-virtual-appliances
 [guidance-expressroute]: ./expressroute.md
 [guidance-vpn]: ./vpn.md
-[linux-vm-ra]: ../virtual-machines-linux/index.md
+[linux-vm-ra]: ../n-tier/n-tier-cassandra.md
 [hybrid-ha]: ./expressroute-vpn-failover.md
-[naming conventions]: /azure/guidance/guidance-naming-conventions
-[resource-manager-overview]: /azure/azure-resource-manager/resource-group-overview
-[vnet-peering]: /azure/virtual-network/virtual-network-peering-overview
-[vnet-peering-limit]: /azure/azure-subscription-service-limits#networking-limits
-[vnet-peering-requirements]: /azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints
-[vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
-[windows-vm-ra]: ../virtual-machines-windows/index.md
+[naming conventions]: https://docs.microsoft.com/azure/guidance/guidance-naming-conventions
+[VN-pricing]: https://azure.microsoft.com/pricing/details/virtual-network
+[vnet-peering]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
+[vnet-peering-limit]: https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits
+[vnet-peering-requirements]: https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints
+[vpn-appliance]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices
+[windows-vm-ra]: ../n-tier/n-tier-sql-server.md
 [visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 
 [0]: ./images/hub-spoke.png "Hub-spoke topology in Azure"
-[1]: ./images/hub-spoke-gateway-routing.svg "Hub-spoke topology in Azure with transitive routing"
-[2]: ./images/hub-spoke-no-gateway-routing.svg "Hub-spoke topology in Azure with transitive routing using an NVA"
-[3]: ./images/hub-spokehub-spoke.svg "Hub-spoke-hub-spoke topology in Azure"
+[2]: ./images/spoke-spoke-routing.png "Routing between spokes using Azure Firewall"

@@ -1,6 +1,6 @@
 ---
 title: Real time processing
-description: 
+description: Use real-time processing solutions to capture data streams and generate reports or automated responses with minimal latency.
 author: zoinerTejada
 ms.date: 02/12/2018
 ms.topic: guide
@@ -62,7 +62,7 @@ For more information, see [Stream processing](../technology-choices/stream-proce
 
 ### Analytical data store
 
-- **SQL Data Warehouse**, **HBase**, **Spark**, or **Hive**. Processed real-time data can be stored in a relational database such Azure SQL Data Warehouse, a NoSQL store such as HBase, or as files in distributed storage over which Spark or Hive tables can be defined and queried.
+- **Azure Synapse Analytics**, **HBase**, **Spark**, or **Hive**. Processed real-time data can be stored in a relational database such Synapse Analytics, a NoSQL store such as HBase, or as files in distributed storage over which Spark or Hive tables can be defined and queried.
 
 For more information, see [Analytical data stores](../technology-choices/analytical-data-stores.md).
 

@@ -5,6 +5,11 @@ author: MikeWasson
 ms.date: 07/21/2017
 ms.topic: guide
 ms.service: architecture-center
+ms.category:
+  - security
+  - developer-tools
+  - identity
+ms.custom: has-adal-ref
 ms.subservice: reference-architecture
 pnp.series.title: Manage Identity in Multitenant Applications
 pnp.series.prev: authorize
@@ -57,13 +62,13 @@ The Tailspin application implements delegated user identity. Here are the main d
 **Application identity:**
 
 * The web API does not get information about the user.
-* The web API cannot perform any authorization based on the user identity. All authorization decisions are made by the web application.  
+* The web API cannot perform any authorization based on the user identity. All authorization decisions are made by the web application.
 * The web API cannot be used by an untrusted client (JavaScript or native client application).
 * This approach may be somewhat simpler to implement, because there is no authorization logic in the Web API.
 
 In either approach, the web application must get an access token, which is the credential needed to call the web API.
 
-* For delegated user identity, the token has to come from the IDP, which can issue a token on behalf of the user.
+* For delegated user identity, the token has to come from an identity provider (IDP), such as Azure Active Directory, which can issue a token on behalf of the user.
 * For client credentials, an application might get the token from the IDP or host its own token server. (But don't write a token server from scratch; use a well-tested framework like [IdentityServer4].) If you authenticate with Azure AD, it's strongly recommended to get the access token from Azure AD, even with client credential flow.
 
 The rest of this article assumes the application is authenticating with Azure AD.
@@ -109,7 +114,7 @@ public override async Task AuthorizationCodeReceived(AuthorizationCodeReceivedCo
 
 Here are the various parameters that are needed:
 
-* `authority`. Derived from the tenant ID of the signed in user. (Not the tenant ID of the SaaS provider)  
+* `authority`. Derived from the tenant ID of the signed in user. (Not the tenant ID of the SaaS provider)
 * `authorizationCode`. the auth code that you got back from the IDP.
 * `clientId`. The web application's client ID.
 * `clientSecret`. The web application's client secret.
@@ -303,17 +308,17 @@ At startup, the application reads settings from every registered configuration p
 [**Next**][token-cache]
 
 <!-- links -->
-[Authorization]: authorize.md
-[ADAL]: /azure/active-directory/develop/active-directory-authentication-libraries
-[claims-transformation]: claims.md#claims-transformations
+
+[Authorization]: ./authorize.md
+[ADAL]: https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries
+[claims-transformation]: ./claims.md#claims-transformations
 [IdentityServer4]: https://github.com/IdentityServer/IdentityServer4
 [JwtBearer]: https://www.nuget.org/packages/Microsoft.AspNet.Authentication.JwtBearer
-[KeyVault]: https://azure.microsoft.com/services/key-vault/
-[options]: /aspnet/core/fundamentals/configuration/options
-[tenant sign-up]: signup.md
-[Token caching]: token-cache.md
+[KeyVault]: https://azure.microsoft.com/services/key-vault
+[options]: https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options
+[tenant sign-up]: ./signup.md
+[Token caching]: ./token-cache.md
 [sample application]: https://github.com/mspnp/multitenant-saas-guidance
-[surveys]: tailspin.md
-[token-cache]: token-cache.md
-[user-secrets]: /aspnet/core/security/app-secrets
-
+[surveys]: ./tailspin.md
+[token-cache]: ./token-cache.md
+[user-secrets]: https://docs.microsoft.com/aspnet/core/security/app-secrets

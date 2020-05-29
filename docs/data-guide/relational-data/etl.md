@@ -1,12 +1,14 @@
 ---
 title: Extract, transform, and load (ETL)
-description: 
+description: Learn about extract-transform-load (ETL) and extract-load-transform (ELT) data transformation pipelines, and how to use control flows and data flows.
 author: zoinerTejada
-ms.date: 02/12/2018
+ms.date: 11/20/2019
 ms.topic: guide
 ms.service: architecture-center
 ms.subservice: cloud-fundamentals
 ---
+
+<!-- cSpell:ignore Oozie HDFS deduplicating -->
 
 # Extract, transform, and load (ETL)
 
@@ -26,11 +28,11 @@ Often, the three ETL phases are run in parallel to save time. For example, while
 
 Relevant Azure service:
 
-- [Azure Data Factory v2](https://azure.microsoft.com/services/data-factory/)
+- [Azure Data Factory v2](https://azure.microsoft.com/services/data-factory)
 
 Other tools:
 
-- [SQL Server Integration Services (SSIS)](/sql/integration-services/sql-server-integration-services)
+- [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 
 ## Extract, load, and transform (ELT)
 
@@ -40,22 +42,22 @@ Extract, load, and transform (ELT) differs from ETL solely in where the transfor
 
 Typical use cases for ELT fall within the big data realm. For example, you might start by extracting all of the source data to flat files in scalable storage such as Hadoop distributed file system (HDFS) or Azure Data Lake Store. Technologies such as Spark, Hive, or PolyBase can then be used to query the source data. The key point with ELT is that the data store used to perform the transformation is the same data store where the data is ultimately consumed. This data store reads directly from the scalable storage, instead of loading the data into its own proprietary storage. This approach skips the data copy step present in ETL, which can be a time consuming operation for large data sets.
 
-In practice, the target data store is a [data warehouse](./data-warehousing.md) using either a Hadoop cluster (using Hive or Spark) or a SQL Data Warehouse. In general, a schema is overlaid on the flat file data at query time and stored as a table, enabling the data to be queried like any other table in the data store. These are referred to as external tables because the data does not reside in storage managed by the data store itself, but on some external scalable storage.
+In practice, the target data store is a [data warehouse](./data-warehousing.md) using either a Hadoop cluster (using Hive or Spark) or a Azure Synapse Analytics. In general, a schema is overlaid on the flat file data at query time and stored as a table, enabling the data to be queried like any other table in the data store. These are referred to as external tables because the data does not reside in storage managed by the data store itself, but on some external scalable storage.
 
-The data store only manages the schema of the data and applies the schema on read. For example, a Hadoop cluster using Hive would describe a Hive table where the data source is effectively a path to a set of files in HDFS. In SQL Data Warehouse, PolyBase can achieve the same result &mdash; creating a table against data stored externally to the database itself. Once the source data is loaded, the data present in the external tables can be processed using the capabilities of the data store. In big data scenarios, this means the data store must be capable of massively parallel processing (MPP), which breaks the data into smaller chunks and distributes processing of the chunks across multiple machines in parallel.
+The data store only manages the schema of the data and applies the schema on read. For example, a Hadoop cluster using Hive would describe a Hive table where the data source is effectively a path to a set of files in HDFS. In Azure Synapse, PolyBase can achieve the same result &mdash; creating a table against data stored externally to the database itself. Once the source data is loaded, the data present in the external tables can be processed using the capabilities of the data store. In big data scenarios, this means the data store must be capable of massively parallel processing (MPP), which breaks the data into smaller chunks and distributes processing of the chunks across multiple machines in parallel.
 
 The final phase of the ELT pipeline is typically to transform the source data into a final format that is more efficient for the types of queries that need to be supported. For example, the data may be partitioned. Also, ELT might use optimized storage formats like Parquet, which stores row-oriented data in a columnar fashion and provides optimized indexing.
 
 Relevant Azure service:
 
-- [Azure SQL Data Warehouse](/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)
-- [HDInsight with Hive](/azure/hdinsight/hadoop/hdinsight-use-hive)
-- [Azure Data Factory v2](https://azure.microsoft.com/services/data-factory/)
-- [Oozie on HDInsight](/azure/hdinsight/hdinsight-use-oozie-linux-mac)
+- [Azure Synapse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is)
+- [HDInsight with Hive](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-hive)
+- [Azure Data Factory v2](https://azure.microsoft.com/services/data-factory)
+- [Oozie on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-oozie-linux-mac)
 
 Other tools:
 
-- [SQL Server Integration Services (SSIS)](/sql/integration-services/sql-server-integration-services)
+- [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 
 ## Data flow and control flow
 
@@ -69,11 +71,11 @@ In the diagram above, there are several tasks within the control flow, one of wh
 
 Relevant Azure service:
 
-- [Azure Data Factory v2](https://azure.microsoft.com/services/data-factory/)
+- [Azure Data Factory v2](https://azure.microsoft.com/services/data-factory)
 
 Other tools:
 
-- [SQL Server Integration Services (SSIS)](/sql/integration-services/sql-server-integration-services)
+- [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services)
 
 ## Technology choices
 
@@ -86,5 +88,5 @@ Other tools:
 
 The following reference architectures show end-to-end ELT pipelines on Azure:
 
-- [Enterprise BI in Azure with SQL Data Warehouse](../../reference-architectures/data/enterprise-bi-sqldw.md)
-- [Automated enterprise BI with SQL Data Warehouse and Azure Data Factory](../../reference-architectures/data/enterprise-bi-adf.md)
+- [Enterprise BI in Azure with Azure Synapse](../../reference-architectures/data/enterprise-bi-synapse.md)
+- [Automated enterprise BI with Azure Synapse and Azure Data Factory](../../reference-architectures/data/enterprise-bi-adf.md)
