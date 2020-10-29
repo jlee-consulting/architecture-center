@@ -84,7 +84,7 @@ There are several options for updating Windows Virtual Desktop desktops. Deployi
 
 - [Microsoft Endpoint Configuration Manager (MECM)](/mem/configmgr/) updates server and desktop operating systems.
 - [Windows Updates for Business](/windows/deployment/update/waas-manage-updates-wufb) updates desktop operating systems like Windows 10 multi-session.
-- [Azure Update Management](/azure/automation/automation-update-management) updates server operating systems.
+- [Azure Update Management](/azure/automation/update-management/overview) updates server operating systems.
 - [Azure Log Analytics](/azure/azure-monitor/platform/log-analytics-agent) checks compliance.
 - Deploy a new (custom) image to session hosts every month for the latest Windows and applications updates. You can use an image from the Azure Marketplace or a [custom Azure managed image](/azure/virtual-machines/windows/capture-image-resource).
 
@@ -94,7 +94,7 @@ Numbers in the following sections are approximate. The numbers are based on a va
 
 Also, note that:
 
-- You can't create more than 50 application groups per single Azure AD tenant.
+- You can't create more than 200 application groups per single Azure AD tenant.
 - We recommend that you don't publish more than 50 applications per application group. 
 
 ### Azure limitations
