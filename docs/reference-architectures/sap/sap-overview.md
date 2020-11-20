@@ -1,14 +1,17 @@
 ---
 title: SAP on Azure Architecture Guide
-description: This guide is based on the Microsoft Azure Well-Architected Framework, but the recommendations are specific to deployments of SAP solutions. 
+description: This guide is based on the Microsoft Azure Well-Architected Framework, but the recommendations are specific to deployments of SAP solutions.
 author: maggsl
 ms.date: 06/10/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
-ms.custom: fcp 
+ms.custom:
+  - fcp
+  - reference-architecture
 ms.category:
   - databases
   - compute
+ms.subservice: reference-architecture
 ---
 
 # SAP on Azure Architecture Guide

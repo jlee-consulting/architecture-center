@@ -3,13 +3,15 @@ title: On-premises data gateway for Azure Logic Apps
 description: Using a data gateway to connect on-premises data sources to Azure Logic Apps
 author: doodlemania2
 ms.date: 07/16/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - integration
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # On-premises data gateway for Azure Logic Apps
@@ -91,7 +93,7 @@ An on-premises data gateway can be used with more than just Logic Apps. It's pos
 - This reference only uses standard connectors, which are metered at a lower price than enterprise connectors.
 
 [architectural-diagram]: ./images/gateway-logic-apps.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/gateway-logic-apps.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/gateway-logic-apps.vsdx
 [azure-analysis-services]: /azure/analysis-services/
 [azure-expressroute]: /azure/expressroute/
 [azure-logic-app]: /azure/logic-apps/

@@ -369,7 +369,6 @@ Architecture diagrams, reference architectures, example scenarios, and solutions
 [!INCLUDE [Run a highly available SharePoint Server 2016 farm in Azure](../../includes/cards/sharepoint.md)]
 [!INCLUDE [SMB disaster recovery with Azure Site Recovery](../../includes/cards/disaster-recovery-smb-azure-site-recovery.md)]
 [!INCLUDE [SMB disaster recovery with Double-Take DR](../../includes/cards/disaster-recovery-smb-double-take-dr.md)]
-[!INCLUDE [Use Cobalt to create an extensible cloud framework](../../includes/cards/cobalt-extensible-cloud-framework.md)]
 
 </ul>
 
@@ -397,6 +396,7 @@ Architecture diagrams, reference architectures, example scenarios, and solutions
 [!INCLUDE [Lift and shift to containers with AKS](../../includes/cards/migrate-existing-applications-with-aks.md)]
 [!INCLUDE [Migrate IBM mainframe applications to Azure with TmaxSoft OpenFrame](../../includes/cards/migrate-mainframe-apps-with-tmaxsoft-openframe.md)]
 [!INCLUDE [Modern Customer Support Portal](../../includes/cards/modern-customer-support-portal-powered-by-an-agile-business-process.md)]
+[!INCLUDE [Modernize mainframe & midrange data](../../includes/cards/modernize-mainframe-data-to-azure.md)]
 [!INCLUDE [Serverless Computing Solution for LOB Apps](../../includes/cards/onboarding-customers-with-a-cloud-native-serverless-architecture.md)]
 [!INCLUDE [Unlock Legacy Data with Azure Stack](../../includes/cards/unlock-legacy-data.md)]
 [!INCLUDE [Using Service Fabric to decompose applications](../../includes/cards/service-fabric-microservices.md)]
@@ -453,7 +453,6 @@ Architecture diagrams, reference architectures, example scenarios, and solutions
 [!INCLUDE [Firewall and Application Gateway for virtual networks](../../includes/cards/firewall-application-gateway.md)]
 [!INCLUDE [Hub-spoke network topology in Azure](../../includes/cards/hub-spoke.md)]
 [!INCLUDE [Hybrid Connection](../../includes/cards/hybrid-connectivity.md)]
-[!INCLUDE [Implement a hub-spoke network topology](../../includes/cards/shared-services.md)]
 [!INCLUDE [Implement a secure hybrid network](../../includes/cards/secure-vnet-dmz.md)]
 [!INCLUDE [Secure and govern workloads with network level segmentation](../../includes/cards/network-level-segmentation.md)]
 [!INCLUDE [Troubleshoot a hybrid VPN connection](../../includes/cards/troubleshoot-vpn.md)]

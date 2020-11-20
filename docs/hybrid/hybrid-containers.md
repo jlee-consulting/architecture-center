@@ -3,13 +3,15 @@ title: Run containers in a hybrid environment
 description: Run containers from an enterprise container registry on-premises and in Azure
 author: doodlemania2
 ms.date: 06/29/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - devops
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Run containers in a hybrid environment
@@ -101,7 +103,7 @@ In this reference, Azure Container Instances container groups are utilized as *v
 - Azure Container Instances resources are billed per second, based on an allocation of virtual CPU and memory resources, to the container group. Allocating unnecessary compute resources can exponentially increase the costs required to run this architecture solution. Cost monitoring and optimization is a continuous process that should be conducted at regular intervals throughout the lifetime of your deployment. For further guidance on minimizing Azure Container Instances operational costs, refer to the [cost optimization section][azure-well-architected-framework-performance] of the [Azure Well-Architected Framework][azure-well-architected-framework].
 
 [architectural-diagram]: ./images/hybrid-containers.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/hybrid-containers.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/hybrid-containers.vsdx
 [azure-app-service]: /azure/app-service/
 [azure-arc-kubernetes]: /azure/azure-arc/kubernetes/
 [azure-arc-kubernetes-connect]: /azure/azure-arc/kubernetes/connect-cluster

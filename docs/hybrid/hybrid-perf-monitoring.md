@@ -1,16 +1,18 @@
 ---
-title: Hybrid availability and performance monitoring 
+title: Hybrid availability and performance monitoring
 description: Using Azure Monitor to monitor performance and availability for operating system workloads running on-premises, in third-party cloud providers, and in Microsoft Azure
 author: doodlemania2
 ms.date: 07/27/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - monitoring
   - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Hybrid availability and performance monitoring
@@ -177,7 +179,7 @@ The following are considerations for controlling and managing costs in your envi
 - For more information, refer to [Azure Monitor pricing][monitor-pricing] and [Pricing calculator][pricing-calculator].
 
 [architectural-diagram]: ./images/hybrid-perf-monitoring.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/hybrid-perf-monitoring.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/hybrid-perf-monitoring.vsdx
 [agents-overview]: /azure/azure-monitor/platform/log-analytics-agent
 [dependency-agent]: /azure/azure-monitor/platform/agents-overview#dependency-agent
 [design-deployment]: /azure/azure-monitor/platform/design-logs-deployment

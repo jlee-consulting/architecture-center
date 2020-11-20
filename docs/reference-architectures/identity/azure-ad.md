@@ -4,13 +4,16 @@ titleSuffix: Azure Reference Architectures
 description: Implement a secure hybrid network architecture using Azure Active Directory (Azure AD).
 author: doodlemania2
 ms.date: 08/28/2019
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - identity
   - hybrid
 ms.subservice: reference-architecture
-ms.custom: seodec18, identity
+ms.custom:
+  - seodec18
+  - identity
+  - reference-architecture
 ---
 
 <!-- cSpell:ignore writeback MSOL -->
@@ -267,6 +270,6 @@ A deployment for a reference architecture that implements these recommendations 
 [azure-multifactor-authentication]: /azure/multi-factor-authentication/multi-factor-authentication
 [considerations]: ./index.md
 [sla-aad]: https://azure.microsoft.com/support/legal/sla/active-directory
-[visio-download]: https://archcenter.blob.core.windows.net/cdn/identity-architectures.vsdx
+[visio-download]: https://arch-center.azureedge.net/identity-architectures.vsdx
 [azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator
 [AAF-devops]: ../../framework/devops/overview.md

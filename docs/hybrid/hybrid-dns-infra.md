@@ -3,13 +3,15 @@ title: Design a hybrid Domain Name System solution with Azure
 description: Hybrid Domain Name System (DNS) solution to resolve names for workloads that are hosted on-premises and in Microsoft Azure
 author: doodlemania2
 ms.date: 07/23/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - networking
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Design a hybrid Domain Name System solution with Azure
@@ -148,7 +150,7 @@ For [Linux VMs in Azure][16], use an automated process.
 - If you're using VPN, instead of ExpressRoute, the cost is dependent on the SKU of the [virtual network gateway][19] and is charged per hour.
 
 [architectual-diagram]: ./images/hybrid-dns-infra.png
-[architectual-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/hybrid-dns-infra.vsdx
+[architectual-diagram-visio-source]: https://arch-center.azureedge.net/hybrid-dns-infra.vsdx
 [1]: /azure/expressroute/expressroute-introduction
 [2]: /azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
 [3]: /azure/vpn-gateway/vpn-gateway-about-vpngateways#whatis

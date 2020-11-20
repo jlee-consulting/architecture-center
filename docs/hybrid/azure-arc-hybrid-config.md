@@ -3,13 +3,15 @@ title: Manage configurations for Azure Arc enabled servers
 description: Use Azure Arc to extend Azure Resource Manager capabilities to Windows and Linux machines on any infrastructure.
 author: doodlemania2
 ms.date: 07/28/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: fcp 
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Manage configurations for Azure Arc enabled servers
@@ -134,7 +136,7 @@ The Connected Machine agent for Linux and Windows communicates outbound securely
 - Other considerations are described in the [Principles of cost optimization][principles-cost-opt] section in the Microsoft Azure Well-Architected Framework.
 
 [architectural-diagram]: ./images/azure-arc-hybrid-config.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/azure-arc-hybrid-config.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/azure-arc-hybrid-config.vsdx
 [Azure Arc]: /azure/azure-arc/
 [Azure Policy Guest Configuration]: /azure/governance/policy/concepts/guest-configuration
 [Azure Monitor]: /azure/azure-monitor/

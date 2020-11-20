@@ -3,9 +3,11 @@ title: Automation overview of goals, best practices, and types in Azure
 description: Automation overview
 author: v-aangie
 ms.date: 10/15/2020
-ms.topic: article
+ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
+ms.custom:
+  - article
 ---
 
 # Automation overview: Goals, best practices, and types
@@ -17,7 +19,7 @@ Automation has revolutionized how businesses operate and this trend continues to
 - Minimize human error in configuring repetitive tasks.
 - Produce consistent and repeatable results.
 
-To learn more, see [Deployment considerations for automation](https://docs.microsoft.com/azure/architecture/framework/DevOps/deployment#automation).
+To learn more, see [Deployment considerations for automation](./deployment.md#automation).
 
 ## Goals of automation
 

@@ -3,13 +3,15 @@ title: Disaster Recovery for Azure Stack Hub virtual machines
 description: Optimized approach to disaster recovery of virtual machine (VM)-based user workloads hosted on Azure Stack Hub
 author: doodlemania2
 ms.date: 08/06/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Disaster Recovery for Azure Stack Hub virtual machines
@@ -427,4 +429,4 @@ In conclusion, Azure Stack Hub is a unique offering, which differs in many aspec
 It's important to note that the disaster recovery solution described here focused exclusively on VM-based workloads of Azure Stack Hub. This is only part of an overall business continuity strategy that should account for other Azure Stack Hub workload types and scenarios that affect their availability.
 
 [architectural-diagram]: ./images/azure-stack-vm-dr.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/azure-stack-vm-dr.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/azure-stack-vm-dr.vsdx

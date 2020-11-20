@@ -3,13 +3,15 @@ title: Deploy AI and machine learning at the edge by using Azure Stack Edge
 description: Run intelligence workloads directly on IoT devices by using Azure Stack Edge
 author: doodlemania2
 ms.date: 07/16/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - ai-machine-learning
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Deploy AI and machine learning at the edge by using Azure Stack Edge
@@ -95,7 +97,7 @@ Additionally, data can continue to transfer from Azure Stack Edge to Machine Lea
 - [Azure Machine Learning pricing][azure-machine-learning-pricing] includes charges for the virtual machines that are used for training the model in the public cloud.
 
 [architectural-diagram]: ./images/deploy-ai-ml-azure-stack-edge.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/deploy-ai-ml-azure-stack-edge.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/deploy-ai-ml-azure-stack-edge.vsdx
 [azure-container-instances]: /azure/container-instances/
 [azure-container-registry]: /azure/container-registry/
 [azure-expressroute]: /azure/expressroute/

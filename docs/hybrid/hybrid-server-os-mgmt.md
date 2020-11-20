@@ -3,13 +3,15 @@ title: Manage hybrid Azure workloads using Windows Admin Center
 description: Deploy Windows Admin Center to manage environments on-premises and in Azure.
 author: doodlemania2
 ms.date: 07/29/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 # Manage hybrid Azure workloads using Windows Admin Center
 
@@ -189,7 +191,7 @@ For a complete list of server management capabilities, refer to [Manage Servers 
 
 [architectural-diagram-azure]: ./images/hybrid-server-os-mgmt-wac-azure.png
 [architectural-diagram-onprem]: ./images/hybrid-server-os-mgmt-wac-onprem.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/hybrid-server-os-mgmt.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/hybrid-server-os-mgmt.vsdx
 [onprem-installation-type]: ./images/hybrid-server-os-mgmt-wac-onprem-install-type.png
 [wac-case-studies]: /windows-server/manage/windows-admin-center/understand/case-studies
 [user-access-options]: /windows-server/manage/windows-admin-center/plan/user-access-options

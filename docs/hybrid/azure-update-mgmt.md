@@ -3,14 +3,16 @@ title: Azure Automation Update Management
 description: Manage operating system updates with Update Management in Azure Automation
 author: doodlemania2
 ms.date: 07/16/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - management-and-governance
   - networking
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Azure Automation Update Management
@@ -305,7 +307,7 @@ Azure Automation can process up to 1,000 computers per update deployment. If you
 - Use the Azure pricing calculator to estimate costs. For more information about Log Analytics pricing models, refer to [Azure Monitor pricing][40].
 
 [architectural-diagram]: ./images/azure-update-mgmt.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/azure-update-mgmt.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/azure-update-mgmt.vsdx
 [1]: /azure/azure-monitor/platform/design-logs-deployment
 [2]: /azure/automation/automation-hybrid-runbook-worker
 [3]: /azure/automation/automation-intro

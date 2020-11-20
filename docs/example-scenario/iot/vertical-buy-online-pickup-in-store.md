@@ -4,12 +4,14 @@ titleSuffix: Azure Example Scenarios
 description: Learn about how Azure IoT can help a retail solution for stores implementing buy online, pickup in store scenarios.
 author: falloutxAY
 ms.date: 10/1/2020
-ms.topic: example-scenario
+ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: example-scenario
-ms.category: 
-    - iot
-ms.custom: fcp
+ms.category:
+  - iot
+ms.custom:
+  - fcp
+  - example-scenario
 ---
 
 # Optimizing curbside pickup with Azure IoT
@@ -180,7 +182,7 @@ The geofence triggers provides additional accuracy on the estimated time of arri
 -   [Azure Notification Hubs](https://azure.microsoft.com/en-us/services/notification-hubs/) is a massively scalable mobile push notification engine for quickly sending millions of notifications to iOS, Android, Windows. Using this service, Contoso can easily broadcast notifications to their customers. 
 
 For more detailed discussions, see the IoT reference architecture
-[document](https://docs.microsoft.com/azure/architecture/reference-architectures/iot) to understand and explore the various implementation choices
+[document](../../reference-architectures/iot.md) to understand and explore the various implementation choices
 available.
 
 ## Next steps

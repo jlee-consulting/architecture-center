@@ -3,13 +3,15 @@ title: Using Azure file shares in a hybrid environment
 description: Azure file shares can replace traditional file servers. With identity-based authentication you can control access to Azure file shares by using AD DS users and groups.
 author: doodlemania2
 ms.date: 07/26/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - storage
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Using Azure file shares in a hybrid environment
@@ -131,7 +133,7 @@ For more information, refer to [Configure Azure Storage firewalls and virtual ne
 - There are additional costs associated with file share snapshots and outbound data transfers (when transferring data from Azure file shares, inbound data transfer is free). Data transfer costs depend on the actual amount of transferred data and on the stock keeping unit (SKU) of your virtual network gateway (if a virtual network gateway is used). Please refer to [Azure Files Pricing][Azure-Files-Pricing] and [Azure Pricing calculator][Azure-Pricing-calculator] for the actual costs. Be aware that the actual cost varies by Azure region and your individual contract. Contact a Microsoft sales representative for additional information on pricing.
 
 [architectural-diagram]: ./images/azure-file-share.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/azure-file-share.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/azure-file-share.vsdx
 [Create-file-share]: /azure/storage/files/storage-how-to-create-file-share
 [Premium-azure-file-share]: /azure/storage/files/storage-how-to-create-premium-fileshare
 [P2S-with-Azure-files]: /azure/storage/files/storage-files-configure-p2s-vpn-windows
@@ -141,7 +143,7 @@ For more information, refer to [Configure Azure Storage firewalls and virtual ne
 [Planning-for-Azure-Files]: /azure/storage/files/storage-files-planning
 [Azure-Storage-redundancy]: /azure/storage/common/storage-redundancy
 [Azure-files-How-it-works]: /azure/storage/files/storage-files-active-directory-overview#how-it-works
-[Azure-files-Enablement-steps]: /azure/storage/files/storage-files-identity-auth-active-directory-enable
+[Azure-files-Enablement-steps]: /azure/storage/files/storage-files-identity-ad-ds-enable
 [Azure-files-share-permissions]: /azure/storage/files/storage-files-identity-ad-ds-assign-permissions
 [Azure-files-file-level-permissions]: /azure/storage/files/storage-files-identity-ad-ds-configure-permissions
 [Azure-Files-snapshots]: /azure/storage/files/storage-snapshots-files

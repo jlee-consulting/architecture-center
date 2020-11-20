@@ -3,13 +3,15 @@ title: Azure Arc hybrid management and deployment for Kubernetes clusters
 description: Using Azure Arc to register Kubernetes clusters hosted outside of Azure, and using Azure tools to manage these clusters along with clusters hosted in Azure Kubernetes Service.
 author: doodlemania2
 ms.date: 07/23/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Azure Arc hybrid management and deployment for Kubernetes clusters
@@ -130,7 +132,7 @@ Azure Arc agents require the following protocols/ports/outbound URLs to function
 - General cost considerations are described in the [Principles of cost optimization][Principles of cost optimization] section in the Microsoft Azure Well-Architected Framework.
 
 [Architecture diagram]: ./images/arc-hybrid-kubernetes.png
-[Architecture visio]: https://archcenter.blob.core.windows.net/cdn/arc-hybrid-kubernetes.vsdx
+[Architecture visio]: https://arch-center.azureedge.net/arc-hybrid-kubernetes.vsdx
 [Azure Arc]: /azure/azure-arc/
 [Azure Container Instances]: /azure/container-instances/container-instances-overview
 [Azure Kubernetes Service]: /azure/aks/

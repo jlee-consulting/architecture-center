@@ -4,14 +4,18 @@ titleSuffix: Azure Reference Architectures
 description: Learn how to implement a hub-spoke topology in Azure, where the hub is a virtual network and the spokes are virtual networks that peer with the hub.
 author: doodlemania2
 ms.date: 09/30/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - networking
   - management-and-governance
   - hybrid
 ms.subservice: reference-architecture
-ms.custom: seodec18, networking, fcp
+ms.custom:
+  - seodec18
+  - networking
+  - fcp
+  - reference-architecture
 ---
 
 # Hub-spoke network topology in Azure
@@ -169,10 +173,6 @@ az deployment group create \
     --parameters winVmUser=$ADMIN_USER winVmPassword=$ADMIN_PASSWORD winVmDnsPrefix=$VM_DNS_PREFIX
 ```
 
-## Next steps
-
-For a version of this architecture that deploys shared identity and security services, see [Hub-spoke network topology with shared services in Azure](./shared-services.md).
-
 <!-- links -->
 
 [aaf-cost]: ../../framework/cost/overview.md
@@ -196,7 +196,7 @@ For a version of this architecture that deploys shared identity and security ser
 [vnet-peering-requirements]: /azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints
 [vpn-appliance]: /azure/vpn-gateway/vpn-gateway-about-vpn-devices
 [windows-vm-ra]: ../n-tier/n-tier-sql-server.md
-[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-hub-spoke.vsdx
+[visio-download]: https://arch-center.azureedge.net/hybrid-network-hub-spoke.vsdx
 [ref-arch-repo]: https://github.com/mspnp/reference-architectures
 
 [0]: ./images/hub-spoke.png "Hub-spoke topology in Azure"

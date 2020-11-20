@@ -3,13 +3,15 @@ title: Azure Automation in a hybrid environment
 description: Azure Automation leveraged for both on-premises and cloud environments
 author: doodlemania2
 ms.date: 07/23/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - management-and-governance
 ms.subservice: reference-architecture
-ms.custom: fcp
+ms.custom:
+  - fcp
+  - reference-architecture
 ---
 
 # Azure Automation in a hybrid environment
@@ -295,7 +297,7 @@ To test and deploy the runbook on a Hybrid Runbook Worker Group, use the followi
 - Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator) to estimate costs. Pricing models for Log Analytics are explained [here][30].
 
 [architectural-diagram]: ./images/azure-automation-hybrid.png
-[architectural-diagram-visio-source]: https://archcenter.blob.core.windows.net/cdn/azure-automation-hybrid.vsdx
+[architectural-diagram-visio-source]: https://arch-center.azureedge.net/azure-automation-hybrid.vsdx
 [1]: /azure/azure-monitor/platform/design-logs-deployment
 [2]: /azure/automation/automation-hybrid-runbook-worker
 [3]: /azure/automation/automation-intro

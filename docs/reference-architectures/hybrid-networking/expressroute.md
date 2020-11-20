@@ -3,13 +3,17 @@ title: Extend an on-premises network using ExpressRoute
 description: Implement a secure site-to-site network architecture that spans an Azure virtual network and an on-premises network connected using Azure ExpressRoute.
 author: doodlemania2
 ms.date: 07/23/2019
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - hybrid
   - networking
 ms.subservice: reference-architecture
-ms.custom: seodec18, networking, fcp
+ms.custom:
+  - seodec18
+  - networking
+  - fcp
+  - reference-architecture
 ---
 
 # Connect an on-premises network to Azure using ExpressRoute
@@ -347,7 +351,7 @@ To deploy the solution, perform the following steps.
 
 
 [azurect]: https://github.com/Azure/NetworkMonitoring/tree/master/AzureCT
-[visio-download]: https://archcenter.blob.core.windows.net/cdn/hybrid-network-architectures.vsdx
+[visio-download]: https://arch-center.azureedge.net/hybrid-network-architectures.vsdx
 
 [0]: ./images/expressroute.png "Hybrid network architecture using Azure ExpressRoute"
 [1]: ../_images/guidance-hybrid-network-expressroute/figure2.png "Using redundant routers with ExpressRoute primary and secondary circuits"

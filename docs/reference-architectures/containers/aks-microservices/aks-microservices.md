@@ -3,12 +3,14 @@ title: Microservices architecture on Azure Kubernetes Service (AKS)
 description: Deploy a microservices architecture on Azure Kubernetes Service (AKS)
 author: doodlemania2
 ms.date: 05/07/2020
-ms.topic: reference-architecture
+ms.topic: conceptual
 ms.service: architecture-center
 ms.category:
   - containers
 ms.subservice: reference-architecture
-ms.custom: microservices
+ms.custom:
+  - microservices
+  - reference-architecture
 ---
 
 # Microservices architecture on Azure Kubernetes Service (AKS)
@@ -326,7 +328,7 @@ To deploy the reference implementation for this architecture, follow the steps i
 
 [ri]: https://github.com/mspnp/microservices-reference-implementation
 [ri-deploy]: https://github.com/mspnp/microservices-reference-implementation/blob/master/deployment.md
-[visio-download]: https://archcenter.blob.core.windows.net/cdn/aks-reference-architecture.vsdx
+[visio-download]: https://arch-center.azureedge.net/aks-reference-architecture.vsdx
 [aaf-cost]: ../../../framework/cost/overview.md
 [azure-pricing-calculator]: https://azure.microsoft.com/pricing/calculator
 [DevOps-pricing]: https://azure.microsoft.com/pricing/details/devops/azure-devops-services

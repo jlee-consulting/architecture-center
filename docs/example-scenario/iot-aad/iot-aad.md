@@ -7,11 +7,13 @@ ms.date: 03/12/2020
 ms.category:
   - iot
   - security
-ms.topic: example-scenario
+ms.topic: conceptual
 ms.service: architecture-center
 ms.custom:
-    - fcp
+  - fcp
+  - example-scenario
 social_image_url: /azure/architecture/example-scenario/iot-aad/media/multi-tenant-iot.png
+ms.subservice: example-scenario
 ---
 
 <!--cSpell:ignore knicholasa ISV's Woodgrove ecommerce SAML Gmail -->
