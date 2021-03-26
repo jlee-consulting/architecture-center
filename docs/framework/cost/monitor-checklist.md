@@ -6,6 +6,8 @@ ms.date: 05/12/2020
 ms.topic: conceptual
 ms.service: architecture-center
 ms.subservice: well-architected
+products:
+  - azure-cost-management
 ms.custom:
   - article
 ---
@@ -21,7 +23,7 @@ Use this checklist to monitor the cost of the workload.
     - [Follow a consistent tagging standard](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#metadata-tags)
     - [Video: How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw)
 
-- **Use RBAC built-in roles for cost**. Only give access to users who are intended to view and analyze cost reports. The roles are defined per scope. For example, use the **Cost Management Reader role** to enable users to view costs for their resources in subscriptions or resource groups.
+- **Use Azure built-in roles for cost**. Only give access to users who are intended to view and analyze cost reports. The roles are defined per scope. For example, use the **Cost Management Reader role** to enable users to view costs for their resources in subscriptions or resource groups.
     - [Provide the right level of cost access](/azure/cloud-adoption-framework/ready/azure-best-practices/track-costs#provide-the-right-level-of-cost-access)
     - [Azure RBAC scopes](/azure/cost-management-billing/costs/understand-work-scopes#azure-rbac-scopes)
 
