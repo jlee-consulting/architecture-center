@@ -2,12 +2,76 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id/>
     <title>Azure Architecture Center</title>
-    <updated>2021-05-03T22:18:35.881Z</updated>
+    <updated>2021-05-24T14:06:42.988Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <subtitle>Updated articles for Azure Architecture Center</subtitle>
     <rights>https://docs.microsoft.com/legal/termsofuse</rights>
     <category term="new"/>
     <category term="updated"/>
+    <entry>
+        <title type="html"><![CDATA[Suggest content tags with deep learning and NLP]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/website-content-tag-suggestion-with-deep-learning-and-nlp</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/website-content-tag-suggestion-with-deep-learning-and-nlp"/>
+        <updated>2021-05-17T14:20:53.000Z</updated>
+        <summary type="html"><![CDATA[Use Microsoft AI to improve website content tagging accuracy by combining deep learning and natural language processing (NLP) with data on site-specific search terms.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Securing your Microsoft Teams channel bot and web app behind a firewall]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/example-scenario/teams/securing-bot-teams-channel</id>
+        <link href="https://docs.microsoft.com/azure/architecture/example-scenario/teams/securing-bot-teams-channel"/>
+        <updated>2021-05-21T18:19:42.000Z</updated>
+        <summary type="html"><![CDATA[Secure the connection to a Microsoft Teams channel bot’s web app using Azure Private Link and Azure Private Endpoint.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Modern analytics architecture with Azure Databricks]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/azure-databricks-modern-analytics-architecture</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/azure-databricks-modern-analytics-architecture"/>
+        <updated>2021-05-20T20:44:12.000Z</updated>
+        <summary type="html"><![CDATA[Create a modern analytics architecture with Azure Databricks, Data Lake Storage, and other Azure services. Unify data, analytics, and AI workloads at any scale.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hub-spoke network topology with Azure Virtual WAN]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/networking/hub-spoke-vwan-architecture</id>
+        <link href="https://docs.microsoft.com/azure/architecture/networking/hub-spoke-vwan-architecture"/>
+        <updated>2021-05-20T15:13:49.000Z</updated>
+        <summary type="html"><![CDATA[A hub-spoke reference architecture.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Azure Automation State Configuration]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/example-scenario/state-configuration/state-configuration</id>
+        <link href="https://docs.microsoft.com/azure/architecture/example-scenario/state-configuration/state-configuration"/>
+        <updated>2021-05-18T18:42:44.000Z</updated>
+        <summary type="html"><![CDATA[Use Azure Automation State Configuration to configure Windows and Linux systems.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Environment monitoring and supply chain optimization with IoT]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/environment-monitoring-and-supply-chain-optimization</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/environment-monitoring-and-supply-chain-optimization"/>
+        <updated>2021-05-11T20:30:02.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to use Azure IoT for environment monitoring and supply chain optimization.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Choose a Kubernetes at the edge compute option]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/operator-guides/aks/choose-kubernetes-edge-compute-option</id>
+        <link href="https://docs.microsoft.com/azure/architecture/operator-guides/aks/choose-kubernetes-edge-compute-option"/>
+        <updated>2021-05-10T19:57:36.000Z</updated>
+        <summary type="html"><![CDATA[Learn about trade-offs for various options available for extending compute on the edge.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Protect APIs with Azure Application Gateway and Azure API Management]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/reference-architectures/apis/protect-apis</id>
+        <link href="https://docs.microsoft.com/azure/architecture/reference-architectures/apis/protect-apis"/>
+        <updated>2021-05-10T18:46:25.000Z</updated>
+        <summary type="html"><![CDATA[See how to protect APIs with API Management and Application Gateway.]]></summary>
+        <category label="new" term="new"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mainframe access to Azure databases]]></title>
         <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/mainframe-access-azure-databases</id>
@@ -15,6 +79,126 @@
         <updated>2021-05-03T18:01:53.000Z</updated>
         <summary type="html"><![CDATA[Give mainframe applications access to Azure data without changing code. Use Microsoft Service for DRDA to run Db2 SQL statements on a SQL Server database.]]></summary>
         <category label="new" term="new"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Demand forecasting and price optimization]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/demand-forecasting-price-optimization-marketing</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/demand-forecasting-price-optimization-marketing"/>
+        <updated>2021-05-12T14:59:31.000Z</updated>
+        <summary type="html"><![CDATA[Predict future customer demand and optimize pricing to maximize profitability using big-data and advanced-analytics services from Microsoft Azure.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building solutions for high availability using Availability Zones]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/high-availability/building-solutions-for-high-availability</id>
+        <link href="https://docs.microsoft.com/azure/architecture/high-availability/building-solutions-for-high-availability"/>
+        <updated>2021-05-21T19:24:37.000Z</updated>
+        <summary type="html"><![CDATA[The Azure Availability Zones construct was developed to provide a software and networking solution to protect against datacenter failures and to provide increased high availability (HA) to our customers.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Extend your on-premises big data investments with HDInsight]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/extend-your-on-premises-big-data-investments-with-hdinsight</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/extend-your-on-premises-big-data-investments-with-hdinsight"/>
+        <updated>2021-05-20T14:56:59.000Z</updated>
+        <summary type="html"><![CDATA[Extend your on-premises big data investments to the cloud. Transform your business by using the advanced analytics capabilities of Azure HDInsight.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Customer Churn Prediction]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/customer-churn-prediction</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/customer-churn-prediction"/>
+        <updated>2021-05-20T14:28:47.000Z</updated>
+        <summary type="html"><![CDATA[This architecture uses Cortana Intelligence Suite components to predict churn probability and helps find patterns in existing data associated with the predicted churn rate.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Create personalized marketing solutions]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/personalized-marketing</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/personalized-marketing"/>
+        <updated>2021-05-20T14:27:44.000Z</updated>
+        <summary type="html"><![CDATA[Create personalized marketing offers and improve customer response using big-data insights based on Azure Machine Learning and Stream Analytics.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Improper Instantiation antipattern]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation</id>
+        <link href="https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation"/>
+        <updated>2021-05-19T08:44:48.000Z</updated>
+        <summary type="html"><![CDATA[Avoid continually creating new instances of an object that is meant to be created once and then shared.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Web API design best practices]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/best-practices/api-design</id>
+        <link href="https://docs.microsoft.com/azure/architecture/best-practices/api-design"/>
+        <updated>2021-05-19T08:44:48.000Z</updated>
+        <summary type="html"><![CDATA[Learn the best practices for designing web APIs that support platform independence and service evolution.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Microsoft Azure Well-Architected Framework]]></title>
+        <id>https://docs.microsoft.com/azure/architecture//framework</id>
+        <link href="https://docs.microsoft.com/azure/architecture//framework"/>
+        <updated>2021-05-19T08:44:48.000Z</updated>
+        <summary type="html"><![CDATA[Azure Well-Architected Framework describes five pillars of cost optimization, operational excellence, performance efficiency, reliability, and security, that result in a high quality and scalable cloud architecture.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Multitenancy and identity management]]></title>
+        <id>https://docs.microsoft.com/azure/architecture//multitenant-identity</id>
+        <link href="https://docs.microsoft.com/azure/architecture//multitenant-identity"/>
+        <updated>2021-05-19T08:44:48.000Z</updated>
+        <summary type="html"><![CDATA[Learn the best practices for multitenant applications, in terms of authentication, authorization, and identity management.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[What is CQRS pattern?]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/patterns/cqrs</id>
+        <link href="https://docs.microsoft.com/azure/architecture/patterns/cqrs"/>
+        <updated>2021-05-19T08:44:48.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to segregate operations that read data from those that update data, using the CQRS (Command and Query Responsibility Segregation) pattern.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Digital Campaign Management]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-marketing-using-azure-database-for-postgresql</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-marketing-using-azure-database-for-postgresql"/>
+        <updated>2021-05-18T20:35:45.000Z</updated>
+        <summary type="html"><![CDATA[Use Azure Database for PostgreSQL to engage with customers around the world with rich, personalized digital marketing experiences.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Forecast energy and power demand]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/forecast-energy-power-demand</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/forecast-energy-power-demand"/>
+        <updated>2021-05-13T18:08:27.000Z</updated>
+        <summary type="html"><![CDATA[Forecast spikes in demand for energy products and services with Microsoft Azure Machine Learning and give your company a competitive advantage.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Population Health Management for Healthcare]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/population-health-management-for-healthcare</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/population-health-management-for-healthcare"/>
+        <updated>2021-05-07T14:29:24.000Z</updated>
+        <summary type="html"><![CDATA[Use Population Health Management to improve clinical and health outcomes and reduce costs. Track, monitor, and benchmark data with this tool.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[HPC cluster deployed in the cloud]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/hpc-cluster</id>
+        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/hpc-cluster"/>
+        <updated>2021-05-07T03:55:54.000Z</updated>
+        <summary type="html"><![CDATA[Run high performance computing (HPC) applications in Azure with a low-maintenance solution that includes the head node, compute nodes, and storage nodes.]]></summary>
+        <category label="updated" term="updated"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hub-spoke network topology in Azure]]></title>
+        <id>https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke</id>
+        <link href="https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke"/>
+        <updated>2021-05-04T05:04:54.000Z</updated>
+        <summary type="html"><![CDATA[Learn how to implement a hub-spoke topology in Azure, where the hub is a virtual network and the spokes are virtual networks that peer with the hub.]]></summary>
+        <category label="updated" term="updated"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Challenges of monitoring distributed architectures]]></title>
@@ -101,7 +285,7 @@
         <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/monitor-mining-equipment</id>
         <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/monitor-mining-equipment"/>
         <updated>2021-04-23T07:01:18.000Z</updated>
-        <summary type="html"><![CDATA[Send data to the Azure cloud to monitor its condition and performance. Process the data with Azure Databricks and alert operators and administrators as needed.]]></summary>
+        <summary type="html"><![CDATA[Send equipment data to the Azure cloud to monitor its condition and performance. Process the data with Azure Databricks and alert operators and administrators as needed.]]></summary>
         <category label="new" term="new"/>
     </entry>
     <entry>
@@ -385,11 +569,11 @@
         <category label="updated" term="updated"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Forecast Energy and Power Demand]]></title>
+        <title type="html"><![CDATA[Forecast energy and power demand]]></title>
         <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/forecast-energy-power-demand</id>
         <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/forecast-energy-power-demand"/>
         <updated>2021-04-13T21:19:09.000Z</updated>
-        <summary type="html"><![CDATA[Give your company a competitive advantage by using Microsoft Azure to help accurately forecast spikes in demand for energy products and services.]]></summary>
+        <summary type="html"><![CDATA[Forecast spikes in demand for energy products and services with Microsoft Azure Machine Learning and give your company a competitive advantage.]]></summary>
         <category label="updated" term="updated"/>
     </entry>
     <entry>
@@ -446,14 +630,6 @@
         <link href="https://docs.microsoft.com/azure/architecture/reference-architectures/data/stream-processing-databricks"/>
         <updated>2021-04-06T15:19:22.000Z</updated>
         <summary type="html"><![CDATA[Create an end-to-end stream processing pipeline in Azure using Azure Databricks.]]></summary>
-        <category label="updated" term="updated"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Demand Forecasting and Price Optimization]]></title>
-        <id>https://docs.microsoft.com/azure/architecture/solution-ideas/articles/demand-forecasting-and-price-optimization</id>
-        <link href="https://docs.microsoft.com/azure/architecture/solution-ideas/articles/demand-forecasting-and-price-optimization"/>
-        <updated>2021-04-06T15:19:22.000Z</updated>
-        <summary type="html"><![CDATA[This solution addresses the challenges raised above by utilizing historical transaction data to train a demand forecasting model.]]></summary>
         <category label="updated" term="updated"/>
     </entry>
     <entry>
